@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Subnet Dashboard</title>
+     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <style>
+   .block_title {
+    background: #2c4653; /* Цвет фона */
+    padding: 20px; /* Поля вокруг текста */
+    border: 2px solid #2c4653; /* Параметры рамки */
+    margin: 0px 20%; /* Отступы */
+    color: white;
+    font-size: 200%;
+    box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.5);
+   }
+   .block_area {
+    color: white;
+    margin: 5px 20%;
+    padding: 10px 10px 30px 20px;
+    height:100px;
+    background-color:#2c4653;
+    border-radius: 10px;
+    box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.5);
+    /* border: 1px solid #000000; */
+   }
+   .block_area_in {
+    display: inline-block;
+    vertical-align: top;
+    width: 19%;
+    /* border: 1px solid #000000; */
+   }
+   .block_area_in_login {
+    display: inline-block;
+    vertical-align: top;
+    width: 13%;
+    /* border: 1px solid #000000; */
+   }
+   .block_area_in_surname {
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    /* border: 1px solid #000000; */
+   }
+   .block_area_in_address {
+    display: inline-block;
+    vertical-align: top;
+    width: 26%;
+    /* border: 1px solid #000000; */
+   }
+   .block_area_in_description {
+    display: inline-block;
+    vertical-align: top;
+    width: 24%;
+    /* border: 1px solid #000000; */
+   }
+   .block_area_in_time {
+    display: inline-block;
+    vertical-align: top;
+    width: 15%;
+    float:right;
+    /* border: 1px solid #000000; */
+
+   }
+   .block_header {
+    color: white;
+    padding: 10px 0px 10px 10px;
+    font-size: 110%;
+    background: #2c4653;
+    margin: 5px 20%;
+    box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.5);
+    /* border: 1px solid #000000; */
+    position: sticky;
+    top: 0;
+   }
+   .block_task-normal {
+    /* font-size: 110%; */
+    background: #FFFFFF;
+    padding: 10px 0px 10px 10px;
+    margin: 15px 20%;
+    box-shadow: 0.2em 0.2em 5px rgba(122,122,122,0.5);
+   }
+   .block_task-notask {
+    /* font-size: 110%; */
+    background: #a0e6f0; /* 88d9e7 */
+    padding: 10px 0px 10px 10px;
+    margin: 15px 20%;
+    box-shadow: 0.2em 0.2em 5px rgba(122,122,122,0.5);
+   }
+   .block_task-maxtime {
+    /* font-size: 110%; */
+    background: #f0aaa0; /* #FF8585 */
+    padding: 10px 0px 10px 10px;
+    margin: 15px 20%;
+    box-shadow: 0.2em 0.2em 5px rgba(122,122,122,0.5);
+   }
+   .block_indent {
+    display: inline-block;
+    width: 40px;
+    /* border: 1px solid #000000;*/
+   }
+   .block_name {
+    vertical-align: top;
+    display: inline-block;
+    padding: 10px;
+    width: 30%;
+    /* border: 1px solid #000000; */
+   }
+   .block_all {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    padding: 10px;
+    width: 10%;
+    /* border: 1px solid #000000; */
+    /* font-size: 150%; */
+    }
+    .block_close {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    padding: 10px;
+    width: 10%;
+    /* border: 1px solid #000000; */
+    /* font-size: 150%; */
+    }
+   .block_inprogress {
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    width: 10%;
+    /* border: 1px solid #000000; */
+   }
+   .block_time {
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px 10px;
+    float:right;
+    width: 20%;
+    /* border: 1px solid #000000; */
+   }
+   .block_taskinfo {
+   color: black;
+   margin: 20px 20px 10px 10px;
+   }
+   .hr-line {
+   margin: 0px 20%;
+   padding: 0;
+   height: 0;
+   border: none;
+   border-top: 3px solid #2c4653;
+   box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.5);
+   }
+   .hr-line2 {
+   margin: 10px;
+   padding: 0;
+   height: 0;
+   border: none;
+   border-top: 1px solid #ddd;
+   }
+   .text {
+    font-size: 110%;
+    font-weight:bold;
+   }
+   .circle {
+   width: 40px;
+   height: 40px;
+   line-height: 40px;
+   background: #2c4653;
+   margin: 0px auto;
+   border-radius: 50%;
+   text-align: center;
+   }
+
+  </style>
+  <base target="_blank">
+ </head>
+ <body bgcolor="#f0ece9" link="black" vlink="black" alink="black">
+
+  <div class="block_title">S U B N E T</div>
+
+  <div class="block_area">
+      <div class="block_area_in"> <big><b>Гор</b></big><br><br>
+          Всего:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=10" style="color: white">{{areas[10][0]}}</a> <br>
+          Выполнено:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_group&task_group1_value=10" style="color: white">{{areas[10][1]}}</a> <br>
+          Выполняется:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=3&filter_selector1=task_group&task_group1_value=10" style="color: white">{{areas[10][2]}}</a> <br>
+          Без исполнителя:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=10&filter_selector2=task_staff&employee_find_input=&employee_id2=-1" style="color: white">{{areas[10][3]}}</a>
+      </div>
+      <div class="block_area_in"> <big><b>Ред</b></big><br><br>
+          Всего:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=3" style="color: white">{{areas[3][0]}}</a> <br>
+          Выполнено:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=3" style="color: white">{{areas[3][1]}}</a> <br>
+          Выполняется:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=3&filter_selector1=task_group&task_group1_value=3" style="color: white">{{areas[3][2]}}</a> <br>
+          Без исполнителя:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=3-&filter_selector2=task_staff&employee_find_input=&employee_id2=-1" style="color: white">{{areas[3][3]}}</a>
+      </div>
+      <div class="block_area_in"> <big><b>Дем</b></big><br><br>
+          Всего:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=9" style="color: white">{{areas[9][0]}}</a> <br>
+          Выполнено:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=9" style="color: white">{{areas[9][1]}}</a> <br>
+          Выполняется:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=9" style="color: white">{{areas[9][2]}}</a> <br>
+          Без исполнителя:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=9&filter_selector2=task_staff&employee_find_input=&employee_id2=-1" style="color: white">{{areas[9][3]}}</a>
+      </div>
+      <div class="block_area_in"> <big><b>Гам</b></big><br><br>
+          Всего:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=4" style="color: white">{{areas[4][0]}}</a> <br>
+          Выполнено:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=4" style="color: white">{{areas[4][1]}}</a> <br>
+          Выполняется:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=4" style="color: white">{{areas[4][2]}}</a> <br>
+          Без исполнителя:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=4&filter_selector2=task_staff&employee_find_input=&employee_id2=-1" style="color: white">{{areas[4][3]}}</a>
+      </div>
+      <div class="block_area_in"> <big><b>Аку</b></big><br><br>
+          Всего:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=5" style="color: white">{{areas[5][0]}}</a> <br>
+          Выполнено:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=5" style="color: white">{{areas[5][1]}}</a> <br>
+          Выполняется:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=5" style="color: white">{{areas[5][2]}}</a> <br>
+          Без исполнителя:
+          <a href="https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=996&filter_selector1=task_group&task_group1_value=5&filter_selector2=task_staff&employee_find_input=&employee_id2=-1" style="color: white">{{areas[5][3]}}</a>
+      </div>
+  </div>
+
+  <div class="block_header">
+      <!-- <div class="block_indent"></div> -->
+      <div class="block_name">Линейщик / Монтажник</div>
+      <div class="block_all">Назначен</div>
+      <div class="block_close">Выполнено</div>
+      <div class="block_inprogress">Выполняется</div>
+      <div class="block_time">Время</div>
+ </div>
+
+ {% for employee in names %}
+ <div class="{{employees[employee][5]}}">
+     <div class="block_name"><font color=#2c4653 size="5"><b>{{employee}}</b></font></div>
+     <div class="block_all"><a href="{{employees[employee][1][0]}}"><div class="circle"><font color='white'><strong>{{employees[employee][1][1]}}</strong></font></div> </a></div>
+     <div class="block_close"><a href="{{employees[employee][2][0]}}"><div class="circle"><font color='white'><strong>{{employees[employee][2][1]}}</strong></font></div></a></div>
+     <div class="block_inprogress"><a href="{{employees[employee][3][0]}}"><div class="circle"><font color='white'><strong>{{employees[employee][3][1]}}</strong></font></div></a></div>
+     {% if "no_closed_time" in employees[employee][4] %}
+     <div class="block_time">Заявки не закрывали > 3 дней</div>
+     {% else %}
+     <div class="block_time">Последняя закрытая заявка:<br><b>{{employees[employee][4][0]}}&ensp;&ensp;&ensp;{{employees[employee][4][1]}}</b></div>
+     {% endif %}
+     {% if "no_task_start" not in employees[employee][3][2] %}
+     {% for task in employees[employee][3][2] %}
+     <div class="block_taskinfo">
+         <div class="hr-line2"></div>
+         <div class="block_area_in_login">
+             # <a href="{{task[1]}}"><strong>{{task[0]}}</strong></a><br><br>
+             {{task[2][0]}}<br>({{task[2][1]}})
+         </div>
+         <div class="block_area_in_surname"><strong>ФИО:</strong>
+             <font color=#2c4653>{{task[3][0]}}</font><br><br>
+             <font color=#2c4653>({{task[3][1]}})</font>
+         </div>
+         <div class="block_area_in_address"><strong>Адрес:</strong>
+             <font color=#2c4653>{{task[4][0]}}</font><br><br>
+             <font color=#2c4653>({{task[4][1]}})</font>
+         </div>
+         <div class="block_area_in_description">
+             <font color=#000000><b>{{task[5][0]}}</b></font><br>
+             <font color=#2c4653>{{task[5][1]}}</font>
+         </div>
+         <div class="block_area_in_time">
+             <font color=#2c4653><b>{{task[6][0]}}</b></font><br>
+             <font color=#2c4653><b>{{task[6][1]}}</b></font>
+         </div>
+     </div>
+     {% endfor %}
+     {% endif %}
+ </div>
+ <div class="hr-line"></div>
+ {% endfor %}
+ <br>
+ <center><font color=#cccccc> © rt_fan </font></center>
+ <br>
+ </body>
+</html>
