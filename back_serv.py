@@ -4,11 +4,11 @@ from datetime import date
 import requests
 from threading import Thread
 
-# ver0.2 (alternative)
+# ver0.2.1 (alternative)
 
-api_key = '...'
+
+api_key = ''
 url = 'http://user.side.ru/api.php?'
-today = date.today().strftime("%d.%m.%Y")
 areas = {10: '2,41,70,45,32,33,31', 3: '5,37,71,51,16,21,30', 9: '28,43,74,55,53,54,56', 4: '27,44,73,65',
          5: '14,42,72,66'}
 
@@ -18,6 +18,7 @@ employees = {}
 
 # Сбор данных о заявках по районам
 def collecting_data_by_area(area):
+    today = date.today().strftime("%d.%m.%Y")
     area_all_task = requests.get(url, params={'key': api_key, 'cat': 'task', 'action': 'get_list',
                                               'state_id': '1,3', 'type_id': areas[area]})
 
@@ -57,19 +58,21 @@ def masters_id():
 
 # Все заявки в исполнении, на которые назначен мастер
 def application_data_task_start():
+    today = date.today().strftime("%d.%m.%Y")
 
     for name in employees:
-        print('>>>', name, end=': ')
+        # print('>>>', name, employees[name][0], end=': ')
 
         # Все заявки на которые назначен мастер
         response = requests.get(url, params={'key': api_key, 'cat': 'task',
-                                             'action': 'get_list', 'state_id': '1,3', 'employee_id': employees[name][0]})
-        url_all = 'https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&' \
+                                             'action': 'get_list', 'state_id': '1,3',
+                                             'employee_id': employees[name][0]})
+        url_all = 'https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&' \
                   'employee_find_input=&employee_id0={}&filter_selector1=task_state&' \
                   'task_state1_value=995'.format(str(employees[name][0]))
         count_all = response.json()['count']
         employees[name].append([url_all, count_all])  # >>> [id, [запись]]
-        print('ALL', end=', ')
+        # print('ALL', end=', ')
 
         # Все закрытые сегодня заявки на которые назначен мастер
         response = requests.get(url, params={'key': api_key, 'cat': 'task', 'action': 'get_list', 'state_id': '2',
@@ -80,7 +83,7 @@ def application_data_task_start():
                     '&date_finish2_date2={today}'.format(id=str(employees[name][0]), today=today)
         count_close = response.json()['count']
         employees[name].append([url_close, count_close])  # >>> [id, [all], [запись]]
-        print('CLOSE', end=', ')
+        # print('CLOSE', end=', ')
 
         # запрос списка всех заявок в исполнении
         response = requests.get(url, params={'key': api_key, 'cat': 'task', 'action': 'get_list', 'state_id': '3',
@@ -162,7 +165,7 @@ def application_data_task_start():
                      time_in_last_task])
         else:
             employees[name][3][2].append('no_task_start')
-        print('START', end=', ')
+        # print('START', end=', ')
 
         # Время последней закрытой заявки
         week = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime("%d.%m.%Y")  # дата неделю назад
@@ -183,7 +186,7 @@ def application_data_task_start():
             employees[name][4] = str(employees[name][4][0]).split()
         else:
             employees[name].append(['no_closed_time'])
-        print('TIME', end=', ')
+        # print('TIME', end=', ')
 
         # определяем тип блока
         # красный блок - исполнение заявки превысило 3 часа
@@ -214,7 +217,13 @@ def application_data_task_start():
                         employees[name][5] = 'block_task-normal'
             else:
                 employees[name][5] = 'block_task-notask'
-        print('TYPE', end='\n')
+        # print('TYPE', end='\n')
+
+
+def its_time():
+    time_now = datetime.datetime.today()
+    with open("time.txt", 'w') as file:
+        file.write(time_now.strftime("%d-%m-%Y  %H:%M"))
 
 
 def main(function, data):
@@ -229,17 +238,18 @@ def start():
     #   all = ['url', 'count']
     #   close = ['url', 'count']
     #   start = ['url', 'count', [task, task2, ... ]]
-    #       task = ['task_number', 'url', [login1, login2], [surname1, surname2], [address1, address2], [type_task, description],
+    #       task = ['task_number', 'url', [login's], [surname's], [address's], [type_task, description],
     #              [date, time / 'no_task_start']]
 
-    print('### собираю данные о районах...')
+    # print('собираю данные о районах...')
     main(collecting_data_by_area, areas)  # ШАПКА : инфа о заявках по районам
-    print('### собираю данные о мастерах по id...')
+    # print('собираю данные о мастерах по id...')
     masters_id()  # сбор всех id -> запись имён мастеров по id
-    print('/// ждем 10 сек...')
-    time.sleep(20)
-    print('### собираю данные о заявках мастаров...')
+    # print('ждем 5 сек...')
+    time.sleep(5)
+    # print('собираю данные о заявках мастаров...')
     application_data_task_start()  # инфа о всех заявках мастеров
+    its_time()
 
     with open("employees.txt", 'w') as file:
         file.write(str(employees))
@@ -252,8 +262,8 @@ while True:
     try:
         print('*** СТАРТ')
         start()
-        print('/// ждем 120 сек между запросами')
-        time.sleep(120)
+        print('/// ждем 10 сек между запросами')
+        time.sleep(10)
         print('')
     except:
-        print('XXX ошибка соединения')
+        print('XXX ошибка API-запроса в Userside')
