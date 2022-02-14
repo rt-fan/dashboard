@@ -6,7 +6,6 @@ from threading import Thread
 
 # ver0.2.1 (alternative)
 
-
 api_key = ''
 url = 'http://user.side.ru/api.php?'
 areas = {10: '2,41,70,45,32,33,31', 3: '5,37,71,51,16,21,30', 9: '28,43,74,55,53,54,56', 4: '27,44,73,65',
