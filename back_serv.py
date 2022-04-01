@@ -6,8 +6,9 @@ from threading import Thread
 
 # ver0.2.1 (alternative)
 
+
 api_key = ''
-url = 'http://user.side.ru/api.php?'
+url = 'http://userside.ru/api.php?'
 areas = {10: '2,41,70,45,32,33,31', 3: '5,37,71,51,16,21,30', 9: '28,43,74,55,53,54,56', 4: '27,44,73,65',
          5: '14,42,72,66'}
 
@@ -259,10 +260,10 @@ def start():
 
 while True:
     try:
-        print('*** СТАРТ')
+        # print('*** СТАРТ')
         start()
-        print('/// ждем 10 сек между запросами')
+        # print('/// ждем 10 сек между запросами')
         time.sleep(10)
-        print('')
+        # print('')
     except:
-        print('XXX ошибка API-запроса в Userside')
+        print('\nXXX ошибка соединения\n')
