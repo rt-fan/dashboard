@@ -21,6 +21,5 @@ def index():
     return render_template('index.html', names=names, areas=areas, employees=employees, time=time_now)
 
 
-
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
