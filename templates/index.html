@@ -244,22 +244,38 @@
  {% for employee in names %}
  <div class="{{employees[employee][5]}}">
      <div class="block_name">
+         <!-- Не занесли 🔍 -->
          {% if employees[employee][6] == -1 %}
          <font color=#2c4653 size="5"><b>&#128269;</b></font>
+
+         <!-- Дежурство 🌓-->
          {% elif employees[employee][6] == 994 %}
-         <font color=#2c4653 size="5"><b>[Д]</b></font>
+         <font color=#2c4653 size="5"><b>&#127763;</b></font>
+
+         <!-- Не вышел ❌ -->
          {% elif employees[employee][6] == 995 %}
          <font color=#2c4653 size="5"><b>&#10060;</b></font>
+
+         <!-- Отпуск 🌴 -->
          {% elif employees[employee][6] == 996 %}
-         <font color=#2c4653 size="5"><b>[О]</b></font>
+         <font color=#2c4653 size="5"><b>&#127796;</b></font>
+
+         <!-- Выходной 🏠 -->
          {% elif employees[employee][6] == 997 %}
          <font color=#2c4653 size="5"><b>&#127968;</b></font>
+
+         <!-- Больничный 💊 -->
          {% elif employees[employee][6] == 998 %}
-         <font color=#2c4653 size="5"><b>[Б]</b></font>
+         <font color=#2c4653 size="5"><b>&#128138;</b></font>
+
+         <!-- Командировка 💼 -->
          {% elif employees[employee][6] == 999 %}
-         <font color=#2c4653 size="5"><b>[К]</b></font>
+         <font color=#2c4653 size="5"><b>&#128188;</b></font>
+
+         <!-- На работе ✅ -->
          {% else %}
          <font color=#2c4653 size="5"><b>&#9989;</b></font>
+
          {% endif %}
          <font color=#2c4653 size="5"><b>{{employee}}</b></font>
      </div>
