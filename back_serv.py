@@ -124,11 +124,13 @@ def application_data_task_start():
 
                 try:
                     address1 = response.json()['Data']['address']['text']
+                    address1 = str(address1).replace('&#047;', '/')
                 except KeyError:
                     address1 = ''
 
                 try:
                     address2 = response.json()['Data']['additional_data']['38']['value']
+                    address2 = str(address2).replace('&#047;', '/')
                 except KeyError:
                     address2 = ''
 
