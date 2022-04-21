@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <meta charset="utf-8" http-equiv="Refresh" content="30">
+  <meta charset="utf-8" http-equiv="Refresh" content="60">
   <title>Subnet Dashboard</title>
      <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
   <style>
@@ -243,7 +243,26 @@
 
  {% for employee in names %}
  <div class="{{employees[employee][5]}}">
-     <div class="block_name"><font color=#2c4653 size="5"><b>{{employee}}</b></font></div>
+     <div class="block_name">
+         {% if employees[employee][6] == -1 %}
+         <font color=#2c4653 size="5"><b>&#128269;</b></font>
+         {% elif employees[employee][6] == 994 %}
+         <font color=#2c4653 size="5"><b>[Д]</b></font>
+         {% elif employees[employee][6] == 995 %}
+         <font color=#2c4653 size="5"><b>&#10060;</b></font>
+         {% elif employees[employee][6] == 996 %}
+         <font color=#2c4653 size="5"><b>[О]</b></font>
+         {% elif employees[employee][6] == 997 %}
+         <font color=#2c4653 size="5"><b>&#127968;</b></font>
+         {% elif employees[employee][6] == 998 %}
+         <font color=#2c4653 size="5"><b>[Б]</b></font>
+         {% elif employees[employee][6] == 999 %}
+         <font color=#2c4653 size="5"><b>[К]</b></font>
+         {% else %}
+         <font color=#2c4653 size="5"><b>&#9989;</b></font>
+         {% endif %}
+         <font color=#2c4653 size="5"><b>{{employee}}</b></font>
+     </div>
      <div class="block_all"><a href="{{employees[employee][1][0]}}"><div class="circle"><font color='white'><strong>{{employees[employee][1][1]}}</strong></font></div> </a></div>
      <div class="block_close"><a href="{{employees[employee][2][0]}}"><div class="circle"><font color='white'><strong>{{employees[employee][2][1]}}</strong></font></div></a></div>
      <div class="block_inprogress"><a href="{{employees[employee][3][0]}}"><div class="circle"><font color='white'><strong>{{employees[employee][3][1]}}</strong></font></div></a></div>
