@@ -4,7 +4,7 @@ from datetime import date
 import requests
 from threading import Thread
 
-# ver0.2.1 (alternative)
+# ver0.3
 
 
 api_key = ''
@@ -219,6 +219,17 @@ def application_data_task_start():
                 employees[name][5] = 'block_task-notask'
         # print('TYPE', end='\n')
 
+        # табель прихода мастера
+        employees[name].append('')
+        response = requests.get(url, params={'key': api_key, 'cat': 'employee', 'action': 'get_timesheet_data',
+                                             'date_from': today, 'date_to': today, 'employee_id': employees[name][0]})
+        at_work = str(response.json()['data']).replace('}}}', '').split(':')[-1].strip()
+
+        if at_work == '[]':
+            employees[name][6] = -1
+        else:
+            employees[name][6] = int(at_work)
+
 
 def its_time():
     time_now = datetime.datetime.today()
@@ -234,22 +245,23 @@ def main(function, data):
 
 
 def start():
-    # employees = {'name': [id, [all], [close], [start], last_time / 'no_closed_time', div_type], 'name2': [id2, ... ]}
+    # employees = {'name': [id, [all], [close], [start], last_time/'no_closed_time', div_type/'block_task-notask', at_work],
+    #              'name2': [id2, ... ]}
     #   all = ['url', 'count']
     #   close = ['url', 'count']
-    #   start = ['url', 'count', [task, task2, ... ]]
+    #   start = ['url', 'count', [task, task2, .../'no_task_start']]
     #       task = ['task_number', 'url', [login's], [surname's], [address's], [type_task, description],
-    #              [date, time / 'no_task_start']]
+    #              [date, time/'no_task_start']]
 
-    # print('собираю данные о районах...')
+    print('собираю данные о районах...')
     main(collecting_data_by_area, areas)  # ШАПКА : инфа о заявках по районам
-    # print('собираю данные о мастерах по id...')
+    print('собираю данные о мастерах по id...')
     masters_id()  # сбор всех id -> запись имён мастеров по id
-    # print('ждем 5 сек...')
+    print('ждем 5 сек...')
     time.sleep(5)
-    # print('собираю данные о заявках мастаров...')
+    print('собираю данные о заявках мастеров...')
     application_data_task_start()  # инфа о всех заявках мастеров
-    its_time()
+    its_time()  # время запуска скрипта
 
     with open("employees.txt", 'w') as file:
         file.write(str(employees))
