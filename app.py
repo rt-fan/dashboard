@@ -1,7 +1,10 @@
 from flask import Flask, render_template
 import ast
+import logging
 
 app = Flask(__name__)
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
 
 
 @app.route('/')
