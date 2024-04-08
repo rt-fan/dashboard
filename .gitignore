@@ -2,3 +2,11 @@ config.py
 employees.txt
 areas.txt
 time.txt
+/.idea/.gitignore
+/.idea/vcs.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/modules.xml
+/.idea/misc.xml
+/.idea/dashboard.iml
+/.idea/encodings.xml
+/.idea/inspectionProfiles/profiles_settings.xml
