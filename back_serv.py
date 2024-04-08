@@ -3,12 +3,14 @@ import time
 from datetime import date
 import requests
 from threading import Thread
+import config
 
 # ver0.3
 
 
-api_key = ''
-url = 'http://userside.ru/api.php?'
+api_key = config.api_key
+url = config.url
+
 areas = {10: '2,41,70,45,32,33,31', 3: '5,37,71,51,16,21,30', 9: '28,43,74,55,53,54,56', 4: '27,44,73,65',
          5: '14,42,72,66'}
 
