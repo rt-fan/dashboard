@@ -257,8 +257,8 @@ def start():
     #       task = ['task_number', 'url', [login's], [surname's], [address's], [type_task, description],
     #              [date, time/'no_task_start']]
 
-    print('собираю данные о районах...')
-    main(collecting_data_by_area, areas)  # ШАПКА : инфа о заявках по районам
+    # print('собираю данные о районах...')
+    # main(collecting_data_by_area, areas)  # ШАПКА : инфа о заявках по районам
     print('собираю данные о мастерах по id...')
     masters_id()  # сбор всех id -> запись имён мастеров по id
     print('ждем 5 сек...')
