@@ -26,7 +26,7 @@ log.setLevel(logging.ERROR)
 
 
 @app.route('/')
-def index2():
+def index():
     with open('data.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
         employees = data['employees']
