@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" http-equiv="Refresh" content="30">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+    />
+    <link rel="stylesheet" href="./static/css/style.css" />
+    <title>Subnet Информатор</title>
+      <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <div class="main_container">
+          <div class="header">
+            <img src="./static/img/spy.png" alt="" />
+            <h2>ИНФОРМАТОР</h2>
+          </div>
+
+          <!-- <div class="long_time_tasks">
+            <div class="description">
+              Заявки без исполнителя, созданные более 3 часов назад:
+            </div>
+            <div class="task_list">
+              <a href="#"># 179001</a>
+              <a href="#"># 179002</a>
+              <a href="#"># 179003</a>
+              <a href="#"># 179004</a>
+              <a href="#"># 179005</a>
+              <a href="#"># 179006</a>
+              <a href="#"># 179007</a>
+            </div>
+          </div> -->
+
+          <div class="info">
+            Мастер не может выполнять одновременно больше одной заявки!
+          </div>
+          {% for master in employees %}
+          <div class="main_block">
+            <!-- Весь блок с заявкой -->
+
+            <div class="block_title">
+              <!-- блок заголовка -->
+
+              <div class="title_left">
+                <!-- заголовок слева -->
+                <div class="title_left_name">{{employees[master]['name']}}</div>
+                {% if employees[master]['timesheet']['work_state'] == -1 %}
+                  <div class="title_left_state_notwork">не записан</div>
+                {% elif employees[master]['timesheet']['work_state'] == 994 %}
+                  <div class="title_left_state_work">дежурство</div>
+                {% elif employees[master]['timesheet']['work_state'] == 995 %}
+                  <div class="title_left_state_weekend">не вышел</div>
+                {% elif employees[master]['timesheet']['work_state'] == 996 %}
+                  <div class="title_left_state_weekend">отпуск</div>
+                {% elif employees[master]['timesheet']['work_state'] == 997 %}
+                  <div class="title_left_state_weekend">выходной</div>
+                {% elif employees[master]['timesheet']['work_state'] == 998 %}
+                  <div class="title_left_state_weekend">больничный</div>
+                {% elif employees[master]['timesheet']['work_state'] == 999 %}
+                  <div class="title_left_state_weekend">командировка</div>
+                {% else %}
+                  <div class="title_left_state_work">на работе</div>
+                {% endif %}
+                <!-- <div class="title_left_name_and_state"></div> -->
+              </div>
+
+              <div class="title_centr">
+                <div class="title_left_days">
+                  <!-- блок рабочих и нерабочих дней -->
+
+                  <div class="count_workday">
+                    <!-- на работе -->
+                    <div class="count_workday_description">РАБ</div>
+                    <div class="count_workday_number">{{employees[master]['timesheet']['work_days']}}</div>
+                  </div>
+
+                  <div class="count_weekend">
+                    <!-- выходной -->
+                    <div class="count_weekend_description">ВЫХ</div>
+                    <div class="count_weekend_number">{{employees[master]['timesheet']['weekend_days']}}</div>
+                  </div>
+                </div>
+
+                <div class="title_left_count">
+                  <!-- блок счётчики заявок -->
+
+                  <div class="count_assigned">
+                    <!-- назначен -->
+                    <div class="count_assigned_description">НАЗ</div>
+                    <a href="{{employees[master]['page_url_open']}}" target="_blank">
+                      <div class="count_assigned_number">{{employees[master]['open_requests']}}</div></a>
+                  </div>
+
+                  <div class="count_in_progress">
+                    <!-- в исполнении -->
+                    <div class="count_in_progress_description">ИСП</div>
+                    <a href="{{employees[master]['page_url_in_progress']}}" target="_blank">
+                      <div class="count_in_progress_number">{{employees[master]['in_progress_requests']}}</div></a
+                    >
+                  </div>
+
+                  <div class="count_completed">
+                    <!-- выполнено -->
+                    <div class="count_completed_description">ЗАК</div>
+                    <a href="{{employees[master]['page_url_close']}}" target="_blank">
+                      <div class="count_completed_number">{{employees[master]['closed_requests']}}</div></a>
+                  </div>
+
+                  <div class="count_all_in_mount">
+                    <!-- выполнено за месяц -->
+                    <div class="count_all_in_mount_description">MEC</div>
+                    <a href="{{employees[master]['page_url_close_month']}}" target="_blank">
+                      <div class="count_all_in_mount_number">{{employees[master]['closed_month_requests']}}</div></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="title_right">
+                <!-- заголовок справа -->
+
+                <div class="title_right_description">
+                  <!-- описание для последней заявки -->
+                  Последняя заявка:
+                </div>
+                <div class="title_right_datetime">
+                  <!-- дата и время последней заявки -->
+                  {% if employees[master]['last_closed_request_time'] %}
+                    {{employees[master]['last_closed_request_time']}}
+                  {% else %}
+                    Больше 3 дней
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+
+
+            {% if employees[master]['in_progress_requests_ids'] %}
+            {% for task in employees[master]['in_progress_requests_details'] %}
+            <div class="block_tasks">
+              <!-- Блок с заявкой -->
+              {% if employees[master]['in_progress_requests_details'][task]['task_state'] %}
+              <div class="task_state_true">
+                <!-- заявка новая (до 3 часов) -->
+              </div>
+              {% else %}
+              <div class="task_state_false">
+                <!-- заявка просрочена (больше 3 часов) -->
+              </div>
+              {% endif %}
+
+              <div class="tasks">
+                {% set task_ = employees[master]['in_progress_requests_details'][task] %}
+                <!-- заявка -->
+                <div class="task_title">
+                  <!-- заголовок заявки -->
+                  <div class="task_title_left">
+                    <!-- заголовок слева -->
+                    <div class="title_left_number">
+                      <!-- номер заявки -->
+                      <a href="{{ task_['task_url'] }}" target="_blank">
+                        # {{ task_['task_id'] }} </a>
+                    </div>
+                    <div class="title_left_deltatime">
+                      <!-- время прошло с начала заявки -->
+                      {{ task_['task_deltatime'] }}
+                    </div>
+                  </div>
+                  <div class="task_title_right">
+                    <!-- заголовок справа -->
+                    <div class="title_right_description">Заявка назначена:</div>
+                    <div class="title_right_date">{{ task_['task_datetime'] }}</div>
+                    <div class="title_right_time"></div>
+                  </div>
+                </div>
+
+                <div class="task_type">
+                  <!-- тип заявки -->
+                  {{ task_['task_type'] }}
+                </div>
+                {% if task_['task_subtype'] %}
+                <div class="task_subtype">
+                  <!-- подтип заявки -->
+                  {{ task_['task_subtype'] }}
+                </div>
+                {% endif %}
+                {% if task_['task_login_biling'] or task_['task_login_oper'] or task_['task_name_biling'] or task_['task_name_oper'] or task_['task_address_biling'] or task_['task_address_oper']  %}
+                <div class="task_info">
+                  <!-- информация в заявке -->
+                  <div class="task_info_login">
+                    <!-- блок с логином -->
+                    <div class="login_description">Логин:</div>
+                    {% if task_['task_login_biling'] %}
+                    <div class="login_biling"><i>Б:</i> {{ task_['task_login_biling'] }}</div>
+                    {% endif %}
+                    {% if task_['task_login_oper'] %}
+                    <div class="login_operator"><i>О:</i> {{ task_['task_login_oper'] }}</div>
+                    {% endif %}
+                  </div>
+                  <div class="task_info_name">
+                    <!-- блок с ФИО -->
+                    <div class="name_description">ФИО:</div>
+                    {% if task_['task_name_biling'] %}
+                    <div class="name_biling"><i>Б:</i> {{ task_['task_name_biling'] }}</div>
+                    {% endif %}
+                    {% if task_['task_name_oper'] %}
+                    <div class="name_operator"><i>О:</i> {{ task_['task_name_oper'] }}</div>
+                    {% endif %}
+                  </div>
+                  <div class="task_info_address">
+                    <!-- блок с адресом -->
+                    <div class="address_description">Адрес:</div>
+                    {% if task_['task_address_biling'] %}
+                    <div class="address_biling"><i>Б:</i> {{ task_['task_address_biling'] }} </div>
+                    {% endif %}
+                    {% if task_['task_address_oper'] %}
+                    <div class="address_operator"><i>О:</i> {{ task_['task_address_oper'] }} </div>
+                    {% endif %}
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="footer"><a href="https://github.com/rt-fan">rt_fan</a>&nbsp;© {{datetime_request}}</div>
+    </div>
+  </body>
+</html>

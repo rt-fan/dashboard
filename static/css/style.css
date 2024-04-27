@@ -1,0 +1,644 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+body {
+  color: #111827;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  background-color: #e5e7eb;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  color: #ffffff;
+  background-color: #111827;
+  border-radius: 0px 0px 5px 5px;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  padding: 0px 10px;
+  margin-bottom: 16px;
+}
+.header img {
+  height: 32px;
+  width: 32px;
+  margin-right: 10px;
+  border: 2px solid white;
+  border-radius: 4px;
+}
+
+.qwe {
+  display: flex;
+  justify-content: center;
+}
+
+.description {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.task_list {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  gap: 8px 4px;
+}
+
+.long_time_tasks {
+  border: 1px solid #111827;
+  border-radius: 5px;
+  margin-bottom: 16px;
+  padding: 10px 10px 10px 10px;
+  background-color: white;
+}
+
+.long_time_tasks a {
+  border: 1px solid #111827;
+  border-radius: 4px;
+  color: #111827;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(168, 0, 0);
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 16px;
+}
+
+/* Блок с заявкой */
+.main_block {
+  border: 1px solid #111827;
+  border-radius: 5px;
+  margin-bottom: 16px;
+  padding: 10px 10px 10px 10px;
+  background-color: white;
+}
+
+.main_container {
+  margin: 0 auto;
+}
+
+/* Блок заголовок */
+.block_title {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Заголовок слева */
+.title_left {
+  width: 600px;
+  display: flex;
+  align-items: center;
+  /* border: 1px solid rgb(255, 0, 0, 0.2); */
+}
+
+.title_left_count a {
+  text-decoration: none;
+}
+
+/* Имя мастера */
+.title_left_name {
+  font-size: 24px;
+  font-weight: 500;
+  margin-right: 16px;
+}
+
+/* Состояние работы */
+.title_left_state_work {
+  display: flex;
+  align-items: center;
+  height: 21px;
+  color: white;
+  border-radius: 10px;
+  background-color: green;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0px 10px;
+}
+
+.title_left_state_notwork {
+  display: flex;
+  align-items: center;
+  height: 21px;
+  color: white;
+  border-radius: 10px;
+  background-color: rgb(128, 128, 128);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0px 10px;
+}
+
+.title_left_state_weekend {
+  display: flex;
+  align-items: center;
+  height: 21px;
+  color: white;
+  border-radius: 10px;
+  background-color: rgb(0, 140, 255);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0px 10px;
+}
+
+.title_centr {
+  display: flex;
+  justify-content: flex-start;
+  /* border: 1px solid rgb(255, 0, 0, 0.2); */
+}
+
+/* Блок выходов на работу */
+.title_left_days {
+  display: flex;
+  font-size: 12px;
+  font-weight: 400;
+  margin-right: 30px;
+}
+
+/* Блоки счетчиков */
+.count_workday,
+.count_weekend,
+.count_assigned,
+.count_in_progress,
+.count_completed,
+.count_all_in_mount {
+  text-align: center;
+}
+
+/* Счетчики */
+.count_workday_number,
+.count_weekend_number,
+.count_assigned_number,
+.count_in_progress_number,
+.count_completed_number,
+.count_all_in_mount_number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 30px;
+  color: white;
+  background-color: #111827;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* Блок счетчика рабочих дней */
+.count_workday,
+.count_assigned,
+.count_in_progress,
+.count_completed {
+  margin-right: 10px;
+}
+
+/* Счетчики заявок */
+.title_left_count {
+  display: flex;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* Заголовок справа */
+.title_right {
+  width: 150px;
+}
+
+/* Описание для даты последней заявки */
+.title_right_description {
+  margin: 0px;
+}
+
+/* Дата и время последней заявки */
+.title_right_datetime {
+  font-weight: 500;
+}
+
+/* Блок с заявкой */
+.block_tasks {
+  display: flex;
+  border-top: 1px solid #111827;
+  margin-top: 16px;
+  padding-top: 16px;
+}
+
+.task_state_true {
+  width: 10px;
+  background-color: green;
+  margin-right: 10px;
+}
+
+.task_state_false {
+  width: 10px;
+  background-color: rgb(168, 0, 0);
+  margin-right: 10px;
+}
+
+.tasks {
+  width: 100%;
+}
+
+.task_title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task_title_left {
+  display: flex;
+}
+
+.title_left_number {
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 16px;
+}
+
+.title_left_number a {
+  text-decoration: none;
+  color: rgb(17, 24, 39);
+}
+
+.title_left_deltatime {
+  font-size: 16px;
+}
+
+.task_title_right {
+  width: 150px;
+  display: grid;
+  color: #111827;
+  grid-template-areas: "t_descr t_descr" "t_date t_time";
+}
+
+.title_right_description {
+  grid-area: t_descr;
+}
+
+.title_right_date {
+  font-weight: 500;
+  grid-area: t_date;
+}
+
+.title_right_time {
+  font-weight: 500;
+  grid-area: t_time;
+}
+
+.task_type {
+  font-weight: 500;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* комментарий */
+
+.task_subtype {
+  display: inline-block;
+}
+
+.task_info {
+  display: flex;
+  margin-top: 16px;
+  font-size: 16px;
+}
+
+.task_info_login {
+  width: 300px;
+}
+
+.task_info_name {
+  width: 400px;
+}
+
+.task_info_address {
+  width: 550px;
+  /* border: 1px solid rgb(255, 0, 0, 0.2); */
+}
+
+.login_description,
+.name_description,
+.address_description {
+  font-weight: 500;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  color: rgb(17, 24, 39, 0.4);
+}
+
+.footer a {
+  text-decoration: none;
+  color: rgb(17, 24, 39, 0.4);
+}
+
+@media (min-width: 1920px) {
+  .main_container {
+    width: 1480px;
+  }
+  .title_left {
+    width: 35%;
+  }
+
+  /* .footer::after {
+    content: "&nbsp;- 1920px";
+  } */
+}
+
+@media (max-width: 1920px) {
+  .main_container {
+    width: 1480px;
+  }
+  .title_left {
+    width: 35%;
+  }
+
+  /* .footer::after {
+    content: "- 1920px";
+  } */
+}
+
+@media (max-width: 1536px) {
+  .main_container {
+    width: 1024px;
+  }
+
+  .task_list {
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px 4px;
+  }
+
+  .title_left {
+    flex-basis: 48%;
+  }
+
+  .task_info {
+    font-size: 16px;
+  }
+
+  .task_info_login {
+    width: 17%;
+  }
+
+  .task_info_name {
+    width: 38%;
+  }
+
+  .task_info_address {
+    width: 44%;
+  }
+
+  /* .footer::after {
+    content: "&nbsp;- 1536px";
+  } */
+}
+
+@media (max-width: 1026px) {
+  .main_container {
+    width: 758px;
+  }
+
+  .task_list {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px 4px;
+  }
+
+  .title_left {
+    /* width: 75%; */
+    flex-basis: 38%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title_left_name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .title_left_state_work,
+  .title_left_state_notwork,
+  .title_left_state_weekend {
+    display: flex;
+    align-items: center;
+    height: 14px;
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  /* Счетчики */
+  .count_workday_number,
+  .count_weekend_number,
+  .count_assigned_number,
+  .count_in_progress_number,
+  .count_completed_number,
+  .count_all_in_mount_number {
+    width: 30px;
+    height: 25px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .title_left_days {
+    margin-right: 20px;
+  }
+
+  .task_info {
+    display: grid;
+    gap: 8px 0px;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "login name" "address address";
+    font-size: 16px;
+  }
+
+  .task_info_login {
+    width: 100%;
+    /* border: 1px solid rgb(252, 185, 185, 0.5); */
+    grid-area: login;
+  }
+
+  .task_info_name {
+    width: 100%;
+    /* border: 1px solid rgb(252, 185, 185, 0.5); */
+    grid-area: name;
+  }
+
+  .task_info_address {
+    width: 100%;
+    /* border: 1px solid rgb(252, 185, 185, 0.5); */
+    grid-area: address;
+  }
+
+  /* .footer::after {
+    content: "&nbsp;- 1026px";
+  } */
+}
+
+@media (max-width: 768px) {
+  .main_container {
+    width: 640px;
+  }
+
+  .task_list {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px 4px;
+  }
+
+  .block_title {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "name date" "counts counts";
+  }
+
+  .title_left {
+    grid-area: name;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .title_left_name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .title_left_state_work,
+  .title_left_state_notwork,
+  .title_left_state_weekend {
+    display: flex;
+    align-items: center;
+    height: 18px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .title_centr {
+    grid-area: counts;
+  }
+
+  /* Счетчики */
+  .count_workday_number,
+  .count_weekend_number,
+  .count_assigned_number,
+  .count_in_progress_number,
+  .count_completed_number,
+  .count_all_in_mount_number {
+    width: 30px;
+    height: 25px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .title_right {
+    grid-area: date;
+    justify-self: end;
+  }
+
+  .task_info {
+    font-size: 16px;
+  }
+
+  /* .footer::after {
+    content: "&nbsp;- 758px";
+  } */
+}
+
+@media (max-width: 660px) {
+  .main_container {
+    width: 360px;
+  }
+
+  .task_list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px 4px;
+  }
+
+  .info {
+    font-size: 14px;
+  }
+
+  .block_title {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "name name" "counts date";
+  }
+
+  .title_left {
+    justify-content: space-between;
+  }
+
+  .title_left_name {
+    font-size: 16px;
+  }
+
+  .title_left_state_work,
+  .title_left_state_notwork,
+  .title_left_state_weekend {
+    font-size: 10px;
+  }
+  .title_centr {
+    justify-content: center;
+  }
+
+  .title_right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    text-align: end;
+  }
+
+  .task_title_right {
+    display: grid;
+    width: 100px;
+    grid-template-areas: "r_descr r_descr" "r_date r_time";
+    font-size: 10px;
+    justify-content: end;
+    /* border: 1px solid rgb(255, 0, 0, 0.2); */
+  }
+
+  .title_right_description {
+    grid-area: r_descr;
+  }
+
+  .title_right_date {
+    grid-area: r_date;
+    margin-right: 3px;
+  }
+
+  .title_right_time {
+    grid-area: r_time;
+  }
+
+  .task_type {
+    margin-top: 16px;
+  }
+
+  .task_type,
+  .task_subtype {
+    font-size: 14px;
+  }
+
+  .task_info {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+  }
+
+  /* .footer::after {
+    content: "&nbsp;- 660px";
+  } */
+}
