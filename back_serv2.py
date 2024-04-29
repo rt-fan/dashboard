@@ -340,7 +340,7 @@ class DataService:
             async with aiohttp.ClientSession() as self.session:
                 while True:
                     await self.update_data()
-                    await asyncio.sleep(30)  # Пауза 30 сек перед следующим обновлением
+                    await asyncio.sleep(10)  # Пауза 10 сек перед следующим обновлением
         finally:
             await self.session.close()
 
