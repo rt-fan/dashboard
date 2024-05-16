@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 
 url = config.url
 api = config.api_key
+url_check = config.url_check
 data = {}
 
 
@@ -273,9 +274,10 @@ class DataService:
         async with self.session.get(url_) as response:
             if response.status == 200:
                 data = await response.json()
+                # print('### DATA GET_CLOSED_TIME', data['Data']['date']['complete'])
                 return datetime.strptime(data['Data']['date']['complete'], "%Y-%m-%d %H:%M:%S")
 
-    async def lastlast_closed_task(self, master_id):
+    async def last_closed_task(self, master_id):
         # асинхронный запрос к API для вывода времени последней закрытой заявки из списка закрытых заявок по id мастера за последние 3 дня
 
         today = datetime.today()
@@ -284,20 +286,27 @@ class DataService:
         last_datetime = None
 
         async with self.session.get(url_) as response:
-            if response.status == 200:
-                data = await response.json()
-                if data['count']:
-                    for task_id in data['list'].split(','):
-                        closed_datetime = await self.get_closed_time(task_id)
-                        if not last_datetime:
-                            last_datetime = closed_datetime
-                        else:
-                            last_datetime = closed_datetime if closed_datetime > last_datetime else last_datetime
-                    return last_datetime.strftime("%d-%m-%Y %H:%M")
+            try:
+                if response.status == 200:
+                    data = await response.json()
+                    if data['count']:
+                        for task_id in data['list'].split(','):
+                            closed_datetime = await self.get_closed_time(task_id)
+                            if not last_datetime:
+                                last_datetime = closed_datetime
+                            else:
+                                last_datetime = closed_datetime if closed_datetime > last_datetime else last_datetime
+                                # if closed_datetime is not None:
+                                #     last_datetime = closed_datetime if closed_datetime > last_datetime else last_datetime
+
+                        return last_datetime.strftime("%d-%m-%Y %H:%M")
+                    else:
+                        return None
                 else:
-                    return None
-            else:
-                raise Exception(f'API request failed with status: {response.status}')
+                    raise Exception(f'API request failed with status: {response.status}')
+            except:
+                print('ПРОИЗОШЛА ОШИБКА!!!')
+                print('### MASTER_ID:', master_id)
 
     async def update_master_info(self, master_id):
         master_obj = self.masters[master_id]
@@ -307,32 +316,35 @@ class DataService:
         master_obj.name = await self.get_data(master_id)
         master_obj.timesheet = await self.get_timesheet_data(master_id)
         master_obj.open_requests, master_obj.page_url_open = await self.assigned_application(master_id)
-        master_obj.in_progress_requests, master_obj.page_url_in_progress, master_obj.in_progress_requests_ids = await self.applications_in_execution(
-            master_id)
+        master_obj.in_progress_requests, master_obj.page_url_in_progress, master_obj.in_progress_requests_ids = await self.applications_in_execution(master_id)
         master_obj.closed_requests, master_obj.page_url_close = await self.completed_today(master_id)
         master_obj.closed_month_requests, master_obj.page_url_close_month = await self.completed_month(master_id)
         master_obj.in_progress_requests_details = {req_id: await self.get_task_info(req_id) for req_id in
                                                    master_obj.in_progress_requests_ids}
-        master_obj.last_closed_request_time = await self.lastlast_closed_task(master_id)
+        master_obj.last_closed_request_time = await self.last_closed_task(master_id)
 
         # Обновляем данные о мастере в общем хранилище
         self.masters[master_id] = master_obj
 
     async def update_data(self):
-        # Получаем список ID мастеров
-        master_ids = await self.get_division()
+        async with self.session.get(url_check) as response:
+                if response.status == 200:
+                    # Получаем список ID мастеров
+                    master_ids = await self.get_division()
 
-        # Обновляем информацию о каждом мастере
-        await asyncio.gather(
-            *(self.update_master_info(master_id) for master_id in master_ids)
-        )
+                    # Обновляем информацию о каждом мастере
+                    await asyncio.gather(
+                        *(self.update_master_info(master_id) for master_id in master_ids)
+                    )
 
-        # Записываем обновленные данные в файл
-        with open(self.data_file, 'w', encoding='utf-8') as file:
-            data['datetime'] = datetime.now().strftime("%d-%m-%Y %H:%M")
-            data['employees'] = {master_id: master.__dict__ for master_id, master in self.masters.items()}
-            data['employees'] = dict(sorted(data["employees"].items(), key=lambda x: x[1]["name"]))
-            json.dump(data, file, ensure_ascii=False, indent=4)
+                    # Записываем обновленные данные в файл
+                    with open(self.data_file, 'w', encoding='utf-8') as file:
+                        data['datetime'] = datetime.now().strftime("%d-%m-%Y %H:%M")
+                        data['employees'] = {master_id: master.__dict__ for master_id, master in self.masters.items()}
+                        data['employees'] = dict(sorted(data["employees"].items(), key=lambda x: x[1]["name"]))
+                        json.dump(data, file, ensure_ascii=False, indent=4)
+                else:
+                    print('USERSIDE НЕДОСТУПЕН !!!')
 
     async def run(self):
         try:
