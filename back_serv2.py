@@ -3,6 +3,7 @@ import aiohttp
 import asyncio
 import config
 from datetime import datetime, timedelta
+from tenacity import retry, wait_fixed, stop_after_attempt, retry_if_exception_type
 
 url = config.url
 api = config.api_key
@@ -298,6 +299,11 @@ class DataService:
                                 last_datetime = closed_datetime if closed_datetime > last_datetime else last_datetime
                                 # if closed_datetime is not None:
                                 #     last_datetime = closed_datetime if closed_datetime > last_datetime else last_datetime
+                                # else:
+                                #     print('### CLOSED_DATETIME_NONE:', closed_datetime)
+                                #     print('### LAST_DATETIME', last_datetime)
+                                #     print('### MASTER_ID:', master_id)
+                                #     print('### TASK_ID', task_id)
 
                         return last_datetime.strftime("%d-%m-%Y %H:%M")
                     else:
@@ -326,6 +332,7 @@ class DataService:
         # Обновляем данные о мастере в общем хранилище
         self.masters[master_id] = master_obj
 
+    @retry(wait=wait_fixed(10), stop=stop_after_attempt(10), retry=retry_if_exception_type(aiohttp.ClientConnectorError))
     async def update_data(self):
         async with self.session.get(url_check) as response:
                 if response.status == 200:
@@ -353,6 +360,9 @@ class DataService:
                 while True:
                     await self.update_data()
                     await asyncio.sleep(10)  # Пауза 10 сек перед следующим обновлением
+        except aiohttp.ClientConnectorError as e:
+            print('USERSIDE НЕДОСТУПЕН !!!')
+            print(f"Failed to connect: {e}")
         finally:
             await self.session.close()
 
