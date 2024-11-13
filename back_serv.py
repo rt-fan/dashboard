@@ -332,7 +332,7 @@ class DataService:
         # Обновляем данные о мастере в общем хранилище
         self.masters[master_id] = master_obj
 
-    @retry(wait=wait_fixed(10), stop=stop_after_attempt(10), retry=retry_if_exception_type(aiohttp.ClientConnectorError))
+    @retry(wait=wait_fixed(5), stop=stop_after_attempt(3), retry=retry_if_exception_type(aiohttp.ClientConnectorError))
     async def update_data(self):
         async with self.session.get(url_check) as response:
                 if response.status == 200:
@@ -347,6 +347,7 @@ class DataService:
                     # Записываем обновленные данные в файл
                     with open(self.data_file, 'w', encoding='utf-8') as file:
                         data['datetime'] = datetime.now().strftime("%d-%m-%Y %H:%M")
+                        data['datetime_unix'] = int(datetime.now().timestamp())
                         data['employees'] = {master_id: master.__dict__ for master_id, master in self.masters.items()}
                         data['employees'] = dict(sorted(data["employees"].items(), key=lambda x: x[1]["name"]))
                         json.dump(data, file, ensure_ascii=False, indent=4)
@@ -361,12 +362,11 @@ class DataService:
                     await self.update_data()
                     await asyncio.sleep(10)  # Пауза 10 сек перед следующим обновлением
         except aiohttp.ClientConnectorError as e:
-            print('USERSIDE НЕДОСТУПЕН !!!')
             print(f"Failed to connect: {e}")
         finally:
             await self.session.close()
 
 
 # Использование сервиса
-data_service = DataService('data.json')
+data_service = DataService('data/data.json')
 asyncio.run(data_service.run())
