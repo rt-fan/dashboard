@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import ast
 import logging
 import json
@@ -10,11 +10,19 @@ log.setLevel(logging.ERROR)
 
 @app.route('/')
 def index():
-    with open('data.json', 'r', encoding='utf-8') as file:
+    with open('data/data.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
         employees = data['employees']
         datetime_request = data['datetime']
         return render_template('index.html', employees=employees, datetime_request=datetime_request)
+
+
+@app.route('/healthcheck', methods=['GET'])
+def healthcheck():
+    """
+    Endpoint для проверки состояния приложения.
+    """
+    return jsonify({'status': 'OK'})
 
 
 if __name__ == "__main__":
