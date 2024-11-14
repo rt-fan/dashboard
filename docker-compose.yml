@@ -1,0 +1,43 @@
+services:
+  front_subnet_dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: front_subnet_dashboard
+    container_name: front_subnet_dashboard
+    hostname: front_subnet_dashboard
+    environment:
+      - TZ=Europe/Moscow
+    ports:
+      - '5000:5000'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+    volumes:
+      - shared_data:/app/data/
+
+  back_subnet_dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: back_subnet_dashboard
+    container_name: back_subnet_dashboard
+    hostname: back_subnet_dashboard
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+      - shared_data:/app/data/
+    command: python3 back_serv.py
+    healthcheck:
+      test: ["CMD", "bash", "-c", "if [ $(($(date +%s) - $(grep \"datetime_unix\" /app/data/data.json | awk '{print $2}' | tr -d ','))) -gt 120 ]; then exit 1; else exit 0; fi"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+volumes:
+  shared_data:
