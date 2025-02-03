@@ -409,11 +409,13 @@ class DataService:
             await self.session.close()
 
 
-if __name__ == '__main__':
-    # Использование сервиса
-    data_service = DataService('data/data.json')
-    asyncio.run(data_service.run())
+# Использование сервиса
+data_service = DataService('data/data.json')
+asyncio.run(data_service.run())
 
+
+if __name__ == '__main__':
+    pass
     # test = DataService(data_file='data/data2.json')
     # result = asyncio.run(test.get_task_info(221113))
     # print(result)
