@@ -9,6 +9,7 @@ url = config.url
 api = config.api_key
 url_check = config.url_check
 data = {}
+divisions = '27,23'
 
 
 class Master:
@@ -42,13 +43,17 @@ class DataService:
 
     async def get_division(self):
         # асинхронный запрос к API для вывода id мастеров из подразделения "Монтажники/Линейщики"
-        url_ = f'{url}key={api}&cat=employee&action=get_division&id=27'
+
+        url_ = f'{url}key={api}&cat=employee&action=get_division&id={divisions}'
         employee_ids = []
         async with self.session.get(url_) as response:
             if response.status == 200:
                 data = await response.json()
-                for employee in data['data']['27']['staff']['work']:
-                    employee_ids.append(employee['employee_id'])
+                division = data['data']
+                for division_id in division:
+                    for employee in data['data'][division_id]['staff']['work']:
+                        employee_ids.append(employee['employee_id'])
+                        # break
                 self.masters = {master_id: Master(master_id) for master_id in employee_ids}
                 return self.masters
             else:
@@ -98,7 +103,7 @@ class DataService:
     async def assigned_application(self, master_id):
         # асинхронный запрос к API для вывода количества назначенных заявок и ссылки на страницу с фильтром
         url_ = f'{url}key={api}&cat=task&action=get_list&state_id=1,3&employee_id={master_id}'
-        url_string = f'https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0={master_id}&filter_selector1=task_state&task_state1_value=995'
+        url_string = f'{url_check}/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0={master_id}&filter_selector1=task_state&task_state1_value=995'
 
         async with self.session.get(url_) as response:
             if response.status == 200:
@@ -111,7 +116,7 @@ class DataService:
     async def applications_in_execution(self, master_id):
         # асинхронный запрос к API для вывода количества заявок в исполнении, ссылки на страницу с фильтром, словарь заявок и информации по ним
         url_ = f'{url}key={api}&cat=task&action=get_list&state_id=3&employee_id={master_id}'
-        url_string = f'https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0={master_id}&filter_selector1=task_state&task_state1_value=3'
+        url_string = f'{url_check}/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0={master_id}&filter_selector1=task_state&task_state1_value=3'
 
         async with self.session.get(url_) as response:
             if response.status == 200:
@@ -127,7 +132,7 @@ class DataService:
         # асинхронный запрос к API для вывода количества закрытых заявок за текущий день и ссылки на страницу с фильтром
         today = datetime.today()
         url_ = f'{url}key={api}&cat=task&action=get_list&state_id=2&employee_id={master_id}&date_finish_from={today.strftime("%d.%m-%Y")}&date_finish_to={today.strftime("%d.%m-%Y")}'
-        url_string = f'https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1={master_id}&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1={today.strftime("%d.%m-%Y")}&date_finish2_date2={today.strftime("%d.%m-%Y")}'
+        url_string = f'{url_check}/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1={master_id}&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1={today.strftime("%d.%m-%Y")}&date_finish2_date2={today.strftime("%d.%m-%Y")}'
 
         async with self.session.get(url_) as response:
             if response.status == 200:
@@ -142,7 +147,7 @@ class DataService:
         today = datetime.today()
         first_day = today.replace(day=1)
         url_ = f'{url}key={api}&cat=task&action=get_list&state_id=2&employee_id={master_id}&date_finish_from={first_day.strftime("%d.%m-%Y")}&date_finish_to={today.strftime("%d.%m-%Y")}'
-        url_string = f'https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1={master_id}&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1={first_day.strftime("%d.%m-%Y")}&date_finish2_date2={today.strftime("%d.%m-%Y")}'
+        url_string = f'{url_check}/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1={master_id}&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1={first_day.strftime("%d.%m-%Y")}&date_finish2_date2={today.strftime("%d.%m-%Y")}'
 
         async with self.session.get(url_) as response:
             if response.status == 200:
@@ -184,12 +189,25 @@ class DataService:
 
         return formatted_delta, task_state
 
+    async def customer(self, customer_ids: list) -> dict:
+        """ Принимает на вход список id пользователей, и возвращает словарь с информацией о каждом пользователе (логин и ФИО) """
+        resp = {}
+        for customer_id in customer_ids:
+            url_ = f'{url}key={api}&cat=customer&action=get_data&customer_id={customer_id}'
+            async with self.session.get(url_) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    login = data['data']['login']
+                    full_name = data['data']['full_name']
+                    resp[customer_id] = {'login': login, 'full_name': full_name}
+        return resp
+
     async def get_task_info(self, task_id):
         # Асинхронный запрос к API. Словарь заявок, где ключ - id заявки, значение - информация о заявке в исполнении по id заявки:
         # тип заявки, логин, ФИО, адрес и время когда заявка была назначена на мастера
         url_ = f'{url}key={api}&cat=task&action=show&id={task_id}'
         task_data = {'task_id': task_id,
-                     'task_url': f'https://user.subnet05.ru/oper/?core_section=task&action=show&id={task_id}',
+                     'task_url': f'{url_check}/oper/?core_section=task&action=show&id={task_id}',
                      'task_datetime': '',
                      'task_deltatime': '',
                      'task_state': False,
@@ -205,62 +223,85 @@ class DataService:
             async with self.session.get(url_) as response:
                 if response.status == 200:
                     data = await response.json()
-                    history = data['Data']['history']
+                    history = data['data']['history']
                     for i in history:
-                        if i['type'] == 2 and i['param1'] == 3:
+                        if i['type_id'] == 575 and 'Добавлено' in i['comment']:
                             datetime_task = i['date']
                     task_data['task_datetime'] = await self.get_formatted_datetime(datetime_task)
                     task_data['task_deltatime'], task_data['task_state'] = await self.get_deltatime(datetime_task)
-                    task_data['task_type'] = data['Data']['type']['name']
+                    task_data['task_type'] = data['data']['type']['name']
                     try:
-                        task_data['task_subtype'] = (data['Data']['additional_data']['62']['value']).strip(
+                        task_data['task_subtype'] = (data['data']['additional_data']['62']['value']).strip(
                             '[]').replace('\"', '')
                     except:
                         task_data['task_subtype'] = None
 
                     try:
-                        task_data['task_login_biling'] = data['Data']['customer']['login']
-                    except:
+                        # Проверяем, есть ли ключ 'customer' в data['data']
+                        if 'customer' in data['data']:
+                            customers = await self.customer(data['data']['customer'])
+                            # Проверяем, что customers не пустой и содержит данные
+                            if customers:
+                                logins = [customer['login'] for customer in customers.values()]
+                                full_names = [customer['full_name'] for customer in customers.values()]
+                                task_data['task_login_biling'] = ', '.join(logins)
+                                task_data['task_name_biling'] = ', '.join(full_names)
+                        else:
+                            # Если ключа 'customer' нет, устанавливаем значения в None
+                            task_data['task_login_biling'] = None
+                            task_data['task_name_biling'] = None
+
+                    except KeyError as e:
+                        # Обработка только KeyError (если ключ отсутствует)
+                        print(f"KeyError: {e}")
                         task_data['task_login_biling'] = None
+                        task_data['task_name_biling'] = None
+
+                    except Exception as e:
+                        # Обработка других исключений (если они возникнут)
+                        print(f"An error occurred: {e}")
+                        task_data['task_login_biling'] = None
+                        task_data['task_name_biling'] = None
+
 
                     try:
-                        task_data['task_login_oper'] = data['Data']['additional_data']['47']['value']
+                        task_data['task_login_oper'] = data['data']['additional_data']['47']['value']
                     except:
                         task_data['task_login_oper'] = None
 
-                    try:
-                        # добавил доп проверку на совпадение поля 'fullName' с логином из билинга или от оператора, т.к. когда нет поля 'login', в поле 'fullName' записывается логин из Билинга.
-                        task_data['task_name_biling'] = data['Data']['customer']['fullName'] if data.get('Data') and \
-                                                                                                data['Data'].get(
-                                                                                                    'customer') and \
-                                                                                                data['Data'][
-                                                                                                    'customer'].get(
-                                                                                                    'fullName') not in [
-                                                                                                    task_data[
-                                                                                                        'task_login_oper'],
-                                                                                                    task_data[
-                                                                                                        'task_login_biling']] else None
-                        task_data['task_name_biling'] = task_data['task_name_biling'] if task_data[
-                            'task_name_biling'] else None
-                    except:
-                        task_data['task_name_biling'] = None
+                    # try:
+                    #     # Добавил доп проверку на совпадение поля 'fullName' с логином из билинга или от оператора, т.к. когда нет поля 'login', в поле 'fullName' записывается логин из Билинга.
+                    #     task_data['task_name_biling'] = data['data']['customer']['fullName'] if data.get('data') and \
+                    #                                                                             data['data'].get(
+                    #                                                                                 'customer') and \
+                    #                                                                             data['data'][
+                    #                                                                                 'customer'].get(
+                    #                                                                                 'fullName') not in [
+                    #                                                                                 task_data[
+                    #                                                                                     'task_login_oper'],
+                    #                                                                                 task_data[
+                    #                                                                                     'task_login_biling']] else None
+                    #     task_data['task_name_biling'] = task_data['task_name_biling'] if task_data[
+                    #         'task_name_biling'] else None
+                    # except:
+                    #     task_data['task_name_biling'] = None
 
                     try:
-                        task_data['task_name_oper'] = data['Data']['additional_data']['36']['value'] if \
-                        data['Data']['additional_data']['36']['value'] else None
+                        task_data['task_name_oper'] = data['data']['additional_data']['36']['value'] if \
+                            data['data']['additional_data']['36']['value'] else None
                     except:
                         task_data['task_name_oper'] = None
 
                     try:
-                        task_data['task_address_biling'] = data['Data']['address']['text'] if data['Data']['address'][
+                        task_data['task_address_biling'] = data['data']['address']['text'] if data['data']['address'][
                             'text'] else None
                         task_data['task_address_oper'] = str(task_data['task_address_oper']).replace('&#047;', '/')
                     except:
                         task_data['task_address_biling'] = None
 
                     try:
-                        task_data['task_address_oper'] = data['Data']['additional_data']['38']['value'] if \
-                        data['Data']['additional_data']['38']['value'] else None
+                        task_data['task_address_oper'] = data['data']['additional_data']['38']['value'] if \
+                            data['data']['additional_data']['38']['value'] else None
                         task_data['task_address_oper'] = str(task_data['task_address_oper']).replace('&#047;', '/')
                     except:
                         task_data['task_address_oper'] = None
@@ -275,8 +316,8 @@ class DataService:
         async with self.session.get(url_) as response:
             if response.status == 200:
                 data = await response.json()
-                # print('### DATA GET_CLOSED_TIME', data['Data']['date']['complete'])
-                return datetime.strptime(data['Data']['date']['complete'], "%Y-%m-%d %H:%M:%S")
+                # print('### DATA GET_CLOSED_TIME', data['data']['date']['complete'])
+                return datetime.strptime(data['data']['date']['complete'], "%Y-%m-%d %H:%M:%S")
 
     async def last_closed_task(self, master_id):
         # асинхронный запрос к API для вывода времени последней закрытой заявки из списка закрытых заявок по id мастера за последние 3 дня
@@ -322,7 +363,8 @@ class DataService:
         master_obj.name = await self.get_data(master_id)
         master_obj.timesheet = await self.get_timesheet_data(master_id)
         master_obj.open_requests, master_obj.page_url_open = await self.assigned_application(master_id)
-        master_obj.in_progress_requests, master_obj.page_url_in_progress, master_obj.in_progress_requests_ids = await self.applications_in_execution(master_id)
+        master_obj.in_progress_requests, master_obj.page_url_in_progress, master_obj.in_progress_requests_ids = await self.applications_in_execution(
+            master_id)
         master_obj.closed_requests, master_obj.page_url_close = await self.completed_today(master_id)
         master_obj.closed_month_requests, master_obj.page_url_close_month = await self.completed_month(master_id)
         master_obj.in_progress_requests_details = {req_id: await self.get_task_info(req_id) for req_id in
@@ -335,24 +377,24 @@ class DataService:
     @retry(wait=wait_fixed(5), stop=stop_after_attempt(3), retry=retry_if_exception_type(aiohttp.ClientConnectorError))
     async def update_data(self):
         async with self.session.get(url_check) as response:
-                if response.status == 200:
-                    # Получаем список ID мастеров
-                    master_ids = await self.get_division()
+            if response.status == 200:
+                # Получаем список ID мастеров
+                master_ids = await self.get_division()
 
-                    # Обновляем информацию о каждом мастере
-                    await asyncio.gather(
-                        *(self.update_master_info(master_id) for master_id in master_ids)
-                    )
+                # Обновляем информацию о каждом мастере
+                await asyncio.gather(
+                    *(self.update_master_info(master_id) for master_id in master_ids)
+                )
 
-                    # Записываем обновленные данные в файл
-                    with open(self.data_file, 'w', encoding='utf-8') as file:
-                        data['datetime'] = datetime.now().strftime("%d-%m-%Y %H:%M")
-                        data['datetime_unix'] = int(datetime.now().timestamp())
-                        data['employees'] = {master_id: master.__dict__ for master_id, master in self.masters.items()}
-                        data['employees'] = dict(sorted(data["employees"].items(), key=lambda x: x[1]["name"]))
-                        json.dump(data, file, ensure_ascii=False, indent=4)
-                else:
-                    print('USERSIDE НЕДОСТУПЕН !!!')
+                # Записываем обновленные данные в файл
+                with open(self.data_file, 'w', encoding='utf-8') as file:
+                    data['datetime'] = datetime.now().strftime("%d-%m-%Y %H:%M")
+                    data['datetime_unix'] = int(datetime.now().timestamp())
+                    data['employees'] = {master_id: master.__dict__ for master_id, master in self.masters.items()}
+                    data['employees'] = dict(sorted(data["employees"].items(), key=lambda x: x[1]["name"]))
+                    json.dump(data, file, ensure_ascii=False, indent=4)
+            else:
+                print('USERSIDE НЕДОСТУПЕН !!!')
 
     async def run(self):
         try:
@@ -367,6 +409,11 @@ class DataService:
             await self.session.close()
 
 
-# Использование сервиса
-data_service = DataService('data/data.json')
-asyncio.run(data_service.run())
+if __name__ == '__main__':
+    # Использование сервиса
+    data_service = DataService('data/data.json')
+    asyncio.run(data_service.run())
+
+    # test = DataService(data_file='data/data2.json')
+    # result = asyncio.run(test.get_task_info(221113))
+    # print(result)
