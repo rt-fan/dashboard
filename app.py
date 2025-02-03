@@ -17,10 +17,23 @@ def index():
         return render_template('index.html', employees=employees, datetime_request=datetime_request)
 
 
+@app.route('/2')
+def index2():
+    return render_template('index2.html')
+
+
 @app.route('/healthcheck', methods=['GET'])
 def healthcheck():
     """
     Endpoint для проверки состояния приложения.
+    """
+    return jsonify({'status': 'OK'})
+
+
+@app.route('/getlogin', methods=['GET'])
+def get_login():
+    """
+    Возвращаю логин
     """
     return jsonify({'status': 'OK'})
 
