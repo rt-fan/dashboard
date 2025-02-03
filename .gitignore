@@ -10,4 +10,8 @@ time.txt
 /.idea/dashboard.iml
 /.idea/encodings.xml
 /.idea/inspectionProfiles/profiles_settings.xml
-/data.json
+/templates/data.json
+/data/data.json
+/templates/index2.html
+/templates/index3.html
+/templates/index_test.html
