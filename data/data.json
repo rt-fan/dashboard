@@ -1,0 +1,294 @@
+{
+    "datetime": "15-11-2024 10:31",
+    "datetime_unix": 1731655919,
+    "employees": {
+        "38": {
+            "master_id": 38,
+            "name": "Александр Костромичев",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 13,
+                "weekend_days": 1
+            },
+            "open_requests": 6,
+            "in_progress_requests": 1,
+            "closed_requests": 0,
+            "closed_month_requests": 77,
+            "page_url_open": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=38&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=38&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=38&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=15.11-2024&date_finish2_date2=15.11-2024",
+            "page_url_close_month": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=38&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.11-2024&date_finish2_date2=15.11-2024",
+            "in_progress_requests_ids": [
+                "210448"
+            ],
+            "in_progress_requests_details": {
+                "210448": {
+                    "task_id": "210448",
+                    "task_url": "https://user.subnet05.ru/oper/?core_section=task&action=show&id=210448",
+                    "task_datetime": "15-11-2024 09:48",
+                    "task_deltatime": "0ч 43м",
+                    "task_state": true,
+                    "task_type": "Перевод на GPON (ГОР)",
+                    "task_subtype": null,
+                    "task_login_biling": "scorpion-17",
+                    "task_login_oper": "scorpion-17",
+                    "task_name_biling": "Магадов Тимур Рамазанович",
+                    "task_name_oper": "Магадов Тимур Рамазанович",
+                    "task_address_biling": "Мах, Левина, 16",
+                    "task_address_oper": "ул. Левина 17 ч/д"
+                }
+            },
+            "last_closed_request_time": "14-11-2024 16:21"
+        },
+        "140": {
+            "master_id": 140,
+            "name": "Али Исупов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 11,
+                "weekend_days": 3
+            },
+            "open_requests": 16,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 143,
+            "page_url_open": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=140&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=140&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=140&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=15.11-2024&date_finish2_date2=15.11-2024",
+            "page_url_close_month": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=140&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.11-2024&date_finish2_date2=15.11-2024",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": "14-11-2024 18:23"
+        },
+        "118": {
+            "master_id": 118,
+            "name": "Анвер Магомедов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 12,
+                "weekend_days": 2
+            },
+            "open_requests": 11,
+            "in_progress_requests": 0,
+            "closed_requests": 1,
+            "closed_month_requests": 47,
+            "page_url_open": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=118&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=118&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=118&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=15.11-2024&date_finish2_date2=15.11-2024",
+            "page_url_close_month": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=118&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.11-2024&date_finish2_date2=15.11-2024",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": "15-11-2024 09:25"
+        },
+        "68": {
+            "master_id": 68,
+            "name": "Артур Мисриев",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 10,
+                "weekend_days": 4
+            },
+            "open_requests": 7,
+            "in_progress_requests": 1,
+            "closed_requests": 0,
+            "closed_month_requests": 7,
+            "page_url_open": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=68&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=68&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=68&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=15.11-2024&date_finish2_date2=15.11-2024",
+            "page_url_close_month": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=68&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.11-2024&date_finish2_date2=15.11-2024",
+            "in_progress_requests_ids": [
+                "189718"
+            ],
+            "in_progress_requests_details": {
+                "189718": {
+                    "task_id": "189718",
+                    "task_url": "https://user.subnet05.ru/oper/?core_section=task&action=show&id=189718",
+                    "task_datetime": "05-07-2024 16:14",
+                    "task_deltatime": "132д 18ч 17м",
+                    "task_state": false,
+                    "task_type": "Заявки по узлам (ГОР)",
+                    "task_subtype": null,
+                    "task_login_biling": null,
+                    "task_login_oper": null,
+                    "task_name_biling": null,
+                    "task_name_oper": null,
+                    "task_address_biling": null,
+                    "task_address_oper": null
+                }
+            },
+            "last_closed_request_time": "14-11-2024 17:08"
+        },
+        "56": {
+            "master_id": 56,
+            "name": "Асаф Замалетдинов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 1,
+                "weekend_days": 0
+            },
+            "open_requests": 3,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 3,
+            "page_url_open": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=56&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=56&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=56&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=15.11-2024&date_finish2_date2=15.11-2024",
+            "page_url_close_month": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=56&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.11-2024&date_finish2_date2=15.11-2024",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": "14-11-2024 16:21"
+        },
+        "76": {
+            "master_id": 76,
+            "name": "Гамзат Гасанов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 13,
+                "weekend_days": 1
+            },
+            "open_requests": 9,
+            "in_progress_requests": 2,
+            "closed_requests": 0,
+            "closed_month_requests": 61,
+            "page_url_open": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=76&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=76&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=76&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=15.11-2024&date_finish2_date2=15.11-2024",
+            "page_url_close_month": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=76&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.11-2024&date_finish2_date2=15.11-2024",
+            "in_progress_requests_ids": [
+                "210866",
+                "211001"
+            ],
+            "in_progress_requests_details": {
+                "210866": {
+                    "task_id": "210866",
+                    "task_url": "https://user.subnet05.ru/oper/?core_section=task&action=show&id=210866",
+                    "task_datetime": "15-11-2024 10:25",
+                    "task_deltatime": "0ч 06м",
+                    "task_state": true,
+                    "task_type": "Новое подключение (ГОР)",
+                    "task_subtype": null,
+                    "task_login_biling": null,
+                    "task_login_oper": "sbnt2402398",
+                    "task_name_biling": null,
+                    "task_name_oper": "Гаджигиреева Маржанат",
+                    "task_address_biling": "Мах, Шевченко, 6",
+                    "task_address_oper": "Магомеда Ярагского, 57/6, п1, эт2, ком3-4"
+                },
+                "211001": {
+                    "task_id": "211001",
+                    "task_url": "https://user.subnet05.ru/oper/?core_section=task&action=show&id=211001",
+                    "task_datetime": "15-11-2024 10:25",
+                    "task_deltatime": "0ч 06м",
+                    "task_state": true,
+                    "task_type": "Новое подключение (ГОР)",
+                    "task_subtype": null,
+                    "task_login_biling": null,
+                    "task_login_oper": "sbnt2402390",
+                    "task_name_biling": null,
+                    "task_name_oper": "Келбиханов Казихан",
+                    "task_address_biling": "Мах, Каммаева, 29/В",
+                    "task_address_oper": "Каммаева, 29в к1, п1, эт9, кв33"
+                }
+            },
+            "last_closed_request_time": "14-11-2024 17:55"
+        },
+        "170": {
+            "master_id": 170,
+            "name": "Далгат Гаджимагомедов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 8,
+                "weekend_days": 6
+            },
+            "open_requests": 4,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 13,
+            "page_url_open": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=170&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=170&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=170&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=15.11-2024&date_finish2_date2=15.11-2024",
+            "page_url_close_month": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=170&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.11-2024&date_finish2_date2=15.11-2024",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": "14-11-2024 16:12"
+        },
+        "2": {
+            "master_id": 2,
+            "name": "Камиль Гаджиомаров",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 10,
+                "weekend_days": 4
+            },
+            "open_requests": 21,
+            "in_progress_requests": 1,
+            "closed_requests": 2,
+            "closed_month_requests": 163,
+            "page_url_open": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=2&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=2&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=2&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=15.11-2024&date_finish2_date2=15.11-2024",
+            "page_url_close_month": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=2&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.11-2024&date_finish2_date2=15.11-2024",
+            "in_progress_requests_ids": [
+                "207636"
+            ],
+            "in_progress_requests_details": {
+                "207636": {
+                    "task_id": "207636",
+                    "task_url": "https://user.subnet05.ru/oper/?core_section=task&action=show&id=207636",
+                    "task_datetime": "11-11-2024 10:24",
+                    "task_deltatime": "4д 0ч 07м",
+                    "task_state": false,
+                    "task_type": "Заявки абонентов (ГОР)",
+                    "task_subtype": "Иной, указать в описании",
+                    "task_login_biling": "magomednur92",
+                    "task_login_oper": null,
+                    "task_name_biling": "Кадыров Магомеднур Салимович",
+                    "task_name_oper": null,
+                    "task_address_biling": "Мах, Омарова, 23/А кв. 43",
+                    "task_address_oper": "Омарова, д. 23 А, кв. 43"
+                }
+            },
+            "last_closed_request_time": "15-11-2024 09:20"
+        },
+        "162": {
+            "master_id": 162,
+            "name": "Расул Яхьяев",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 11,
+                "weekend_days": 3
+            },
+            "open_requests": 4,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 28,
+            "page_url_open": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=162&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=162&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=162&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=15.11-2024&date_finish2_date2=15.11-2024",
+            "page_url_close_month": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=162&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.11-2024&date_finish2_date2=15.11-2024",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": "14-11-2024 16:23"
+        },
+        "72": {
+            "master_id": 72,
+            "name": "Хабиб Лабазанов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 11,
+                "weekend_days": 3
+            },
+            "open_requests": 8,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 43,
+            "page_url_open": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=72&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=72&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=72&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=15.11-2024&date_finish2_date2=15.11-2024",
+            "page_url_close_month": "https://user.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=72&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.11-2024&date_finish2_date2=15.11-2024",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": "14-11-2024 18:28"
+        }
+    }
+}
