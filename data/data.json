@@ -1,0 +1,508 @@
+{
+    "datetime": "03-02-2025 10:14",
+    "datetime_unix": 1738566845,
+    "employees": {
+        "38": {
+            "master_id": 38,
+            "name": "Александр Костромичев",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 2,
+                "weekend_days": 0
+            },
+            "open_requests": 9,
+            "in_progress_requests": 4,
+            "closed_requests": 0,
+            "closed_month_requests": 8,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=38&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=38&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=38&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=38&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [
+                "221042",
+                "221083",
+                "221117",
+                "221203"
+            ],
+            "in_progress_requests_details": {
+                "221042": {
+                    "task_id": "221042",
+                    "task_url": "https://cuba.subnet05.ru/oper/?core_section=task&action=show&id=221042",
+                    "task_datetime": "02-02-2025 10:49",
+                    "task_deltatime": "23ч 24м",
+                    "task_state": false,
+                    "task_type": "Новое подключение (РЕД)",
+                    "task_subtype": null,
+                    "task_login_biling": null,
+                    "task_login_oper": "sbnt2500210",
+                    "task_name_biling": null,
+                    "task_name_oper": "Ибрагимов Абдулманап Магомедович",
+                    "task_address_biling": null,
+                    "task_address_oper": "Хивская улица, 7в 1под 8эт 38кв"
+                },
+                "221083": {
+                    "task_id": "221083",
+                    "task_url": "https://cuba.subnet05.ru/oper/?core_section=task&action=show&id=221083",
+                    "task_datetime": "02-02-2025 10:48",
+                    "task_deltatime": "23ч 25м",
+                    "task_state": false,
+                    "task_type": "Новое подключение (РЕД)",
+                    "task_subtype": null,
+                    "task_login_biling": "sbnt2300406",
+                    "task_login_oper": "sbnt2300406",
+                    "task_name_biling": "Сотавов Магомедмурза Рашидович",
+                    "task_name_oper": "Сотавов Магомедмурза Рашидович",
+                    "task_address_biling": "Мах, Батырая, 136/Л корпус 4",
+                    "task_address_oper": "проспект Насрутдинова, 55 к2,  6эт, кв не знает, под тоже незнает,"
+                },
+                "221117": {
+                    "task_id": "221117",
+                    "task_url": "https://cuba.subnet05.ru/oper/?core_section=task&action=show&id=221117",
+                    "task_datetime": "02-02-2025 10:49",
+                    "task_deltatime": "23ч 24м",
+                    "task_state": false,
+                    "task_type": "Новое подключение (РЕД)",
+                    "task_subtype": null,
+                    "task_login_biling": null,
+                    "task_login_oper": "sbnt2500211",
+                    "task_name_biling": null,
+                    "task_name_oper": "Алигаджиева Патимат",
+                    "task_address_biling": "Мах, Лаптиева, 53/Н",
+                    "task_address_oper": "Лаптиева, 82, п1, эт1, кв1"
+                },
+                "221203": {
+                    "task_id": "221203",
+                    "task_url": "https://cuba.subnet05.ru/oper/?core_section=task&action=show&id=221203",
+                    "task_datetime": "02-02-2025 17:49",
+                    "task_deltatime": "16ч 24м",
+                    "task_state": false,
+                    "task_type": "Новое подключение (РЕД)",
+                    "task_subtype": null,
+                    "task_login_biling": null,
+                    "task_login_oper": "sbnt2500219",
+                    "task_name_biling": null,
+                    "task_name_oper": "Курбанова Патимат",
+                    "task_address_biling": "Мах, Петра I - Насрудинова, 50/В",
+                    "task_address_oper": "Насрутдинова, 30а к3 п1 эт1 кв1"
+                }
+            },
+            "last_closed_request_time": "02-02-2025 15:50"
+        },
+        "140": {
+            "master_id": 140,
+            "name": "Али Исупов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 2,
+                "weekend_days": 0
+            },
+            "open_requests": 6,
+            "in_progress_requests": 3,
+            "closed_requests": 0,
+            "closed_month_requests": 13,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=140&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=140&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=140&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=140&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [
+                "220381",
+                "220678",
+                "221203"
+            ],
+            "in_progress_requests_details": {
+                "220381": {
+                    "task_id": "220381",
+                    "task_url": "https://cuba.subnet05.ru/oper/?core_section=task&action=show&id=220381",
+                    "task_datetime": "27-01-2025 09:04",
+                    "task_deltatime": "7д 1ч 09м",
+                    "task_state": false,
+                    "task_type": "Заявки абонентов (РЕД)",
+                    "task_subtype": "IPTV (настройка, проблема, покупка)",
+                    "task_login_biling": "sbnt1700267",
+                    "task_login_oper": null,
+                    "task_name_biling": "Мирзоева Зинаида Микаиловна",
+                    "task_name_oper": null,
+                    "task_address_biling": "Мах, пр. Петра Первого, 63/Б кв. 11",
+                    "task_address_oper": "Петра Первого, д. 63 Б, кв. 11"
+                },
+                "220678": {
+                    "task_id": "220678",
+                    "task_url": "https://cuba.subnet05.ru/oper/?core_section=task&action=show&id=220678",
+                    "task_datetime": "29-01-2025 11:42",
+                    "task_deltatime": "4д 22ч 31м",
+                    "task_state": false,
+                    "task_type": "Заявки по узлам (РЕД)",
+                    "task_subtype": null,
+                    "task_login_biling": null,
+                    "task_login_oper": null,
+                    "task_name_biling": null,
+                    "task_name_oper": null,
+                    "task_address_biling": null,
+                    "task_address_oper": null
+                },
+                "221203": {
+                    "task_id": "221203",
+                    "task_url": "https://cuba.subnet05.ru/oper/?core_section=task&action=show&id=221203",
+                    "task_datetime": "02-02-2025 17:49",
+                    "task_deltatime": "16ч 24м",
+                    "task_state": false,
+                    "task_type": "Новое подключение (РЕД)",
+                    "task_subtype": null,
+                    "task_login_biling": null,
+                    "task_login_oper": "sbnt2500219",
+                    "task_name_biling": null,
+                    "task_name_oper": "Курбанова Патимат",
+                    "task_address_biling": "Мах, Петра I - Насрудинова, 50/В",
+                    "task_address_oper": "Насрутдинова, 30а к3 п1 эт1 кв1"
+                }
+            },
+            "last_closed_request_time": "02-02-2025 14:47"
+        },
+        "118": {
+            "master_id": 118,
+            "name": "Анвер Магомедов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 2,
+                "weekend_days": 0
+            },
+            "open_requests": 0,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 0,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=118&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=118&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=118&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=118&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": null
+        },
+        "68": {
+            "master_id": 68,
+            "name": "Артур Мисриев",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 2,
+                "weekend_days": 0
+            },
+            "open_requests": 20,
+            "in_progress_requests": 2,
+            "closed_requests": 0,
+            "closed_month_requests": 0,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=68&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=68&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=68&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=68&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [
+                "216536",
+                "217229"
+            ],
+            "in_progress_requests_details": {
+                "216536": {
+                    "task_id": "216536",
+                    "task_url": "https://cuba.subnet05.ru/oper/?core_section=task&action=show&id=216536",
+                    "task_datetime": "17-01-2025 16:06",
+                    "task_deltatime": "16д 18ч 07м",
+                    "task_state": false,
+                    "task_type": "Порядки",
+                    "task_subtype": "Частые сбои",
+                    "task_login_biling": "zaira1545",
+                    "task_login_oper": "zaira1545",
+                    "task_name_biling": "Тумалаева Заира Руслановна",
+                    "task_name_oper": "Тумалаева Заира Руслановна",
+                    "task_address_biling": "Мах, пр. Петра Первого, 32/В кв. 72",
+                    "task_address_oper": "Адрес\t, Мах, пр. Петра Первого, д. 32 В, кв. 73, 1эт, 2под"
+                },
+                "217229": {
+                    "task_id": "217229",
+                    "task_url": "https://cuba.subnet05.ru/oper/?core_section=task&action=show&id=217229",
+                    "task_datetime": "30-12-2024 17:49",
+                    "task_deltatime": "34д 16ч 24м",
+                    "task_state": false,
+                    "task_type": "Порядки",
+                    "task_subtype": null,
+                    "task_login_biling": null,
+                    "task_login_oper": null,
+                    "task_name_biling": null,
+                    "task_name_oper": null,
+                    "task_address_biling": "Мах, Лаптиева, 53/Н (Ключ 116) #83",
+                    "task_address_oper": null
+                }
+            },
+            "last_closed_request_time": "31-01-2025 12:39"
+        },
+        "56": {
+            "master_id": 56,
+            "name": "Асаф Замалетдинов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 2,
+                "weekend_days": 0
+            },
+            "open_requests": 2,
+            "in_progress_requests": 1,
+            "closed_requests": 2,
+            "closed_month_requests": 4,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=56&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=56&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=56&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=56&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [
+                "220723"
+            ],
+            "in_progress_requests_details": {
+                "220723": {
+                    "task_id": "220723",
+                    "task_url": "https://cuba.subnet05.ru/oper/?core_section=task&action=show&id=220723",
+                    "task_datetime": "29-01-2025 15:28",
+                    "task_deltatime": "4д 18ч 45м",
+                    "task_state": false,
+                    "task_type": "Замена кабеля (РЕД)",
+                    "task_subtype": null,
+                    "task_login_biling": null,
+                    "task_login_oper": "akusha",
+                    "task_name_biling": null,
+                    "task_name_oper": "Гасанов Магомед Шамильевич",
+                    "task_address_biling": null,
+                    "task_address_oper": "пр. Петра Первого, д. 38, кв. 2"
+                }
+            },
+            "last_closed_request_time": "03-02-2025 09:05"
+        },
+        "76": {
+            "master_id": 76,
+            "name": "Гамзат Гасанов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 2,
+                "weekend_days": 0
+            },
+            "open_requests": 8,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 3,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=76&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=76&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=76&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=76&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": "02-02-2025 16:56"
+        },
+        "170": {
+            "master_id": 170,
+            "name": "Далгат Гаджимагомедов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 2,
+                "weekend_days": 0
+            },
+            "open_requests": 0,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 0,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=170&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=170&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=170&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=170&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": null
+        },
+        "95": {
+            "master_id": 95,
+            "name": "Ильяс Багандов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 2,
+                "weekend_days": 0
+            },
+            "open_requests": 5,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 1,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=95&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=95&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=95&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=95&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": "02-02-2025 12:23"
+        },
+        "2": {
+            "master_id": 2,
+            "name": "Камиль Гаджиомаров",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 2,
+                "weekend_days": 0
+            },
+            "open_requests": 13,
+            "in_progress_requests": 2,
+            "closed_requests": 0,
+            "closed_month_requests": 11,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=2&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=2&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=2&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=2&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [
+                "221045",
+                "221134"
+            ],
+            "in_progress_requests_details": {
+                "221045": {
+                    "task_id": "221045",
+                    "task_url": "https://cuba.subnet05.ru/oper/?core_section=task&action=show&id=221045",
+                    "task_datetime": "02-02-2025 09:00",
+                    "task_deltatime": "1д 1ч 13м",
+                    "task_state": false,
+                    "task_type": "Заявки абонентов (ГОР)",
+                    "task_subtype": "Иной, указать в описании",
+                    "task_login_biling": "sbnt2200950",
+                    "task_login_oper": null,
+                    "task_name_biling": "Шапиев Хаджимурат Магомедмухтарович",
+                    "task_name_oper": null,
+                    "task_address_biling": "Мах, Муртазаева, 4",
+                    "task_address_oper": "муртазаева 4"
+                },
+                "221134": {
+                    "task_id": "221134",
+                    "task_url": "https://cuba.subnet05.ru/oper/?core_section=task&action=show&id=221134",
+                    "task_datetime": "02-02-2025 09:02",
+                    "task_deltatime": "1д 1ч 11м",
+                    "task_state": false,
+                    "task_type": "Заявки абонентов (ГОР)",
+                    "task_subtype": "Частые сбои",
+                    "task_login_biling": "sbnt1800314",
+                    "task_login_oper": null,
+                    "task_name_biling": "Сулейманова Мадина Заурбековна",
+                    "task_name_oper": null,
+                    "task_address_biling": "Мах, Акушинского, 1/В кв. 16",
+                    "task_address_oper": "Акушинского, д. 1 В, кв. 16 к2"
+                }
+            },
+            "last_closed_request_time": "02-02-2025 18:20"
+        },
+        "70": {
+            "master_id": 70,
+            "name": "Керим Магомедов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 2,
+                "weekend_days": 0
+            },
+            "open_requests": 7,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 1,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=70&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=70&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=70&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=70&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": "02-02-2025 12:23"
+        },
+        "71": {
+            "master_id": 71,
+            "name": "Магомед Шихахмедов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 2,
+                "weekend_days": 0
+            },
+            "open_requests": 6,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 2,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=71&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=71&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=71&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=71&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": "01-02-2025 17:57"
+        },
+        "119": {
+            "master_id": 119,
+            "name": "Осман Телакаев",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 2,
+                "weekend_days": 0
+            },
+            "open_requests": 6,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 2,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=119&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=119&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=119&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=119&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": "01-02-2025 17:57"
+        },
+        "162": {
+            "master_id": 162,
+            "name": "Расул Яхьяев",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 0,
+                "weekend_days": 0
+            },
+            "open_requests": 0,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 0,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=162&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=162&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=162&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=162&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": null
+        },
+        "81": {
+            "master_id": 81,
+            "name": "Султан Омаров",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 2,
+                "weekend_days": 0
+            },
+            "open_requests": 0,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 0,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=81&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=81&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=81&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=81&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": "31-01-2025 16:58"
+        },
+        "72": {
+            "master_id": 72,
+            "name": "Хабиб Лабазанов",
+            "timesheet": {
+                "work_state": -1,
+                "work_days": 2,
+                "weekend_days": 0
+            },
+            "open_requests": 10,
+            "in_progress_requests": 0,
+            "closed_requests": 0,
+            "closed_month_requests": 6,
+            "page_url_open": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff_wo_division&employee_find_input=&employee_id0=72&filter_selector1=task_state&task_state1_value=995",
+            "page_url_in_progress": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_staff&employee_find_input=&employee_id0=72&filter_selector1=task_state&task_state1_value=3",
+            "page_url_close": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=72&filter_selector2=date_finish&date_finish2_value2=3&date_finish2_date1=03.02-2025&date_finish2_date2=03.02-2025",
+            "page_url_close_month": "https://cuba.subnet05.ru/oper/?core_section=task_list&filter_selector0=task_state&task_state0_value=2&filter_selector1=task_staff&employee_find_input=&employee_id1=72&filter_selector2=date_finish&date_finish2_value2=9&date_finish2_date1=01.02-2025&date_finish2_date2=03.02-2025",
+            "in_progress_requests_ids": [],
+            "in_progress_requests_details": {},
+            "last_closed_request_time": "02-02-2025 15:57"
+        }
+    }
+}
