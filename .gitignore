@@ -15,3 +15,5 @@ time.txt
 /templates/index2.html
 /templates/index3.html
 /templates/index_test.html
+/templates/index_base.html
+/templates/index_js.html
