@@ -9,7 +9,7 @@ url = config.url
 api = config.api_key
 url_check = config.url_check
 data = {}
-divisions = '27,23'
+divisions = '27,23'  # 27-монтажники, 23-сварщики
 
 
 class Master:
@@ -269,23 +269,6 @@ class DataService:
                     except:
                         task_data['task_login_oper'] = None
 
-                    # try:
-                    #     # Добавил доп проверку на совпадение поля 'fullName' с логином из билинга или от оператора, т.к. когда нет поля 'login', в поле 'fullName' записывается логин из Билинга.
-                    #     task_data['task_name_biling'] = data['data']['customer']['fullName'] if data.get('data') and \
-                    #                                                                             data['data'].get(
-                    #                                                                                 'customer') and \
-                    #                                                                             data['data'][
-                    #                                                                                 'customer'].get(
-                    #                                                                                 'fullName') not in [
-                    #                                                                                 task_data[
-                    #                                                                                     'task_login_oper'],
-                    #                                                                                 task_data[
-                    #                                                                                     'task_login_biling']] else None
-                    #     task_data['task_name_biling'] = task_data['task_name_biling'] if task_data[
-                    #         'task_name_biling'] else None
-                    # except:
-                    #     task_data['task_name_biling'] = None
-
                     try:
                         task_data['task_name_oper'] = data['data']['additional_data']['36']['value'] if \
                             data['data']['additional_data']['36']['value'] else None
@@ -316,7 +299,6 @@ class DataService:
         async with self.session.get(url_) as response:
             if response.status == 200:
                 data = await response.json()
-                # print('### DATA GET_CLOSED_TIME', data['data']['date']['complete'])
                 return datetime.strptime(data['data']['date']['complete'], "%Y-%m-%d %H:%M:%S")
 
     async def last_closed_task(self, master_id):
@@ -338,13 +320,6 @@ class DataService:
                                 last_datetime = closed_datetime
                             else:
                                 last_datetime = closed_datetime if closed_datetime > last_datetime else last_datetime
-                                # if closed_datetime is not None:
-                                #     last_datetime = closed_datetime if closed_datetime > last_datetime else last_datetime
-                                # else:
-                                #     print('### CLOSED_DATETIME_NONE:', closed_datetime)
-                                #     print('### LAST_DATETIME', last_datetime)
-                                #     print('### MASTER_ID:', master_id)
-                                #     print('### TASK_ID', task_id)
 
                         return last_datetime.strftime("%d-%m-%Y %H:%M")
                     else:
@@ -394,7 +369,7 @@ class DataService:
                     data['employees'] = dict(sorted(data["employees"].items(), key=lambda x: x[1]["name"]))
                     json.dump(data, file, ensure_ascii=False, indent=4)
             else:
-                print('USERSIDE НЕДОСТУПЕН !!!')
+                print('ERP НЕДОСТУПЕН !!!')
 
     async def run(self):
         try:
@@ -409,13 +384,15 @@ class DataService:
             await self.session.close()
 
 
-# Использование сервиса
-data_service = DataService('data/data.json')
-asyncio.run(data_service.run())
-
-
 if __name__ == '__main__':
-    pass
-    # test = DataService(data_file='data/data2.json')
-    # result = asyncio.run(test.get_task_info(221113))
-    # print(result)
+    # Использование сервиса
+    data_service = DataService('data/data.json')
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    try:
+        loop.run_until_complete(data_service.run())
+    except KeyboardInterrupt:
+        print("Выполнение приостановлено.")
+    finally:
+        loop.run_until_complete(data_service.session.close())  # <-- Закрываем явно
+        loop.close()
