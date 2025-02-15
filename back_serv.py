@@ -338,8 +338,8 @@ class DataService:
         master_obj.name = await self.get_data(master_id)
         master_obj.timesheet = await self.get_timesheet_data(master_id)
         master_obj.open_requests, master_obj.page_url_open = await self.assigned_application(master_id)
-        master_obj.in_progress_requests, master_obj.page_url_in_progress, master_obj.in_progress_requests_ids = await self.applications_in_execution(
-            master_id)
+        (master_obj.in_progress_requests, master_obj.page_url_in_progress,
+         master_obj.in_progress_requests_ids) = await self.applications_in_execution(master_id)
         master_obj.closed_requests, master_obj.page_url_close = await self.completed_today(master_id)
         master_obj.closed_month_requests, master_obj.page_url_close_month = await self.completed_month(master_id)
         master_obj.in_progress_requests_details = {req_id: await self.get_task_info(req_id) for req_id in
