@@ -90,7 +90,7 @@ class DataService:
                     if today.strftime("%Y-%m-%d") == day:
                         work_state = value
 
-                    if value in [994, 995, 996, 997, 998, 999]:
+                    if value.lower() in ["н", "в"]:
                         weekend_days += 1
                     else:
                         work_days += 1
