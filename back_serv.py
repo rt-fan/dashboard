@@ -88,7 +88,7 @@ class DataService:
                     value = next(iter(day_state_id.values()))
 
                     if today.strftime("%Y-%m-%d") == day:
-                        work_state = value
+                        work_state = value.lower()
 
                     if value.lower() in ["н", "в"]:
                         weekend_days += 1
