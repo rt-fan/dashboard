@@ -37,18 +37,10 @@
                 <div class="title_left_name">{{employees[master]['name']}}</div>
                 {% if employees[master]['timesheet']['work_state'] == -1 %}
                   <div class="title_left_state_notwork">не записан</div>
-                {% elif employees[master]['timesheet']['work_state'] == 994 %}
-                  <div class="title_left_state_work">дежурство</div>
-                {% elif employees[master]['timesheet']['work_state'] == 995 %}
-                  <div class="title_left_state_weekend">не вышел</div>
-                {% elif employees[master]['timesheet']['work_state'] == 996 %}
-                  <div class="title_left_state_weekend">отпуск</div>
-                {% elif employees[master]['timesheet']['work_state'] == 997 %}
+                {% elif employees[master]['timesheet']['work_state'] == 'н' %}
+                  <div class="title_left_state_work">не вышел</div>
+                {% elif employees[master]['timesheet']['work_state'] == 'в' %}
                   <div class="title_left_state_weekend">выходной</div>
-                {% elif employees[master]['timesheet']['work_state'] == 998 %}
-                  <div class="title_left_state_weekend">больничный</div>
-                {% elif employees[master]['timesheet']['work_state'] == 999 %}
-                  <div class="title_left_state_weekend">командировка</div>
                 {% else %}
                   <div class="title_left_state_work">на работе</div>
                 {% endif %}
