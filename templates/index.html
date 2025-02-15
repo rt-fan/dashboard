@@ -36,9 +36,9 @@
                 <!-- заголовок слева -->
                 <div class="title_left_name">{{employees[master]['name']}}</div>
                 {% if employees[master]['timesheet']['work_state'] == -1 %}
-                  <div class="title_left_state_notwork">не записан</div>
+                  <div class="title_left_state_notrecorded">не записан</div>
                 {% elif employees[master]['timesheet']['work_state'] == 'н' %}
-                  <div class="title_left_state_work">не вышел</div>
+                  <div class="title_left_state_notwork">не вышел</div>
                 {% elif employees[master]['timesheet']['work_state'] == 'в' %}
                   <div class="title_left_state_weekend">выходной</div>
                 {% else %}
