@@ -129,18 +129,6 @@ body {
   padding: 0px 10px;
 }
 
-.title_left_state_notrecorded {
-  display: flex;
-  align-items: center;
-  height: 21px;
-  color: white;
-  border-radius: 10px;
-  background-color: rgb(128, 128, 128);
-  font-size: 14px;
-  font-weight: 500;
-  padding: 0px 10px;
-}
-
 .title_left_state_notwork {
   display: flex;
   align-items: center;
@@ -160,6 +148,18 @@ body {
   color: white;
   border-radius: 10px;
   background-color: rgb(0, 140, 255);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0px 10px;
+}
+
+.title_left_state_notwork1 {
+  display: flex;
+  align-items: center;
+  height: 21px;
+  color: white;
+  border-radius: 10px;
+  background-color: rgb(128, 128, 128);
   font-size: 14px;
   font-weight: 500;
   padding: 0px 10px;
