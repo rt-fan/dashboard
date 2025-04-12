@@ -227,10 +227,11 @@ class DataService:
                     for i in history:
                         if i['type_id'] == 575 and 'Добавлено' in i['comment']:
                             datetime_task = i['date']
-                    task_data['task_datetime'] = await self.get_formatted_datetime(datetime_task)
-                    task_data['task_deltatime'], task_data['task_state'] = await self.get_deltatime(datetime_task)
-                    task_data['task_type'] = data['data']['type']['name']
                     try:
+                        task_data['task_datetime'] = await self.get_formatted_datetime(datetime_task)
+                        task_data['task_deltatime'], task_data['task_state'] = await self.get_deltatime(datetime_task)
+                        task_data['task_type'] = data['data']['type']['name']
+                    
                         task_data['task_subtype'] = (data['data']['additional_data']['62']['value']).strip(
                             '[]').replace('\"', '')
                     except:
