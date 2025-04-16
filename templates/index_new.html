@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" http-equiv="Refresh" content="30">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+    />
+    <link rel="stylesheet" href="./static/css/style.css" />
+    <title>Subnet Информатор</title>
+      <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <div class="main_container">
+          <div class="header">
+            <img src="./static/img/spy.png" alt="" />
+            <h2>ИНФОРМАТОР</h2>
+          </div>
+
+          <div class="info">
+            Мастер не может выполнять одновременно больше одной заявки!
+          </div>
+          {% for master in employees %}
+          <div class="main_block">
+            <!-- Весь блок с заявкой -->
+
+            <div class="block_title">
+              <!-- блок заголовка -->
+
+              <div class="title_left">
+                <!-- заголовок слева -->
+                <div class="title_left_name">{{employees[master]['name']}}</div>
+                {% if employees[master]['timesheet']['work_state'] == -1 %}
+                  <div class="title_left_state_notwork">не записан</div>
+                {% elif employees[master]['timesheet']['work_state'] == 'н' %}
+                  <div class="title_left_state_weekend">не вышел</div>
+                {% elif employees[master]['timesheet']['work_state'] == 'в' %}
+                  <div class="title_left_state_weekend">выходной</div>
+                {% else %}
+                  <div class="title_left_state_work">на работе</div>
+                {% endif %}
+                <!-- <div class="title_left_name_and_state"></div> -->
+              </div>
+
+              <div class="title_centr">
+                <div class="title_left_days">
+                  <!-- блок рабочих и нерабочих дней -->
+
+                  <div class="count_workday">
+                    <!-- на работе -->
+                    <div class="count_workday_description">РАБ</div>
+                    <div class="count_workday_number">{{employees[master]['timesheet']['work_days']}}</div>
+                  </div>
+
+                  <div class="count_weekend">
+                    <!-- выходной -->
+                    <div class="count_weekend_description">ВЫХ</div>
+                    <div class="count_weekend_number">{{employees[master]['timesheet']['weekend_days']}}</div>
+                  </div>
+                </div>
+
+                <div class="title_left_count">
+                  <!-- блок счётчики заявок -->
+
+                  <div class="count_assigned">
+                    <!-- назначен -->
+                    <div class="count_assigned_description">НАЗ</div>
+                    <a href="{{employees[master]['page_url_open']}}" target="_blank">
+                      <div class="count_assigned_number">{{employees[master]['open_requests']}}</div></a>
+                  </div>
+
+                  <div class="count_in_progress">
+                    <!-- в исполнении -->
+                    <div class="count_in_progress_description">ИСП</div>
+                    <a href="{{employees[master]['page_url_in_progress']}}" target="_blank">
+                      <div class="count_in_progress_number">{{employees[master]['in_progress_requests']}}</div></a
+                    >
+                  </div>
+
+                  <div class="count_completed">
+                    <!-- выполнено -->
+                    <div class="count_completed_description">ЗАК</div>
+                    <a href="{{employees[master]['page_url_close']}}" target="_blank">
+                      <div class="count_completed_number">{{employees[master]['closed_requests']}}</div></a>
+                  </div>
+
+                  <div class="count_all_in_mount">
+                    <!-- выполнено за месяц -->
+                    <div class="count_all_in_mount_description">MEC</div>
+                    <a href="{{employees[master]['page_url_close_month']}}" target="_blank">
+                      <div class="count_all_in_mount_number">{{employees[master]['closed_month_requests']}}</div></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="title_right">
+                <!-- заголовок справа -->
+
+                <div class="title_right_description">
+                  <!-- описание для последней заявки -->
+                  Последняя заявка:
+                </div>
+                <div class="title_right_datetime">
+                  <!-- дата и время последней выполненной заявки -->
+                  {% if employees[master]['last_closed_request_time'] %}
+                    {{employees[master]['last_closed_request_time']}}
+                  {% else %}
+                    Больше 3 дней
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="footer"><a href="https://github.com/rt-fan">rt_fan</a>&nbsp;© {{datetime_request}}</div>
+    </div>
+    <script>
+      async function updateData() {
+        try {
+          const response = await fetch('/api/data');
+          if (!response.ok) {
+            throw new Error(`Ошибка при получении данных: ${response.status}`);
+          }
+          const data = await response.json();
+
+          const masterElements = document.querySelectorAll('.main_block');
+          masterElements.forEach(element => {
+            const masterId = element.dataset.masterId;
+            const masterData = data.employees[masterId];
+
+            if (masterData) {
+              element.querySelector('.title_left_name').textContent = masterData.name;
+              element.querySelector('.work_state').textContent = masterData.timesheet.work_state;
+              element.querySelector('.open_requests').textContent = masterData.open_requests;
+              element.querySelector('.in_progress_requests').textContent = masterData.in_progress_requests;
+
+              const inProgressDetails = element.querySelector('.in_progress_details');
+              if (masterData.in_progress_requests > 0) {
+                const requestId = Object.keys(masterData.in_progress_requests_details)[0]; // Берем первую заявку
+                const requestDetails = masterData.in_progress_requests_details[requestId];
+                if (requestDetails) {
+                  const address = requestDetails.task_address_oper || requestDetails.task_address_biling || "Адрес не указан";
+                  inProgressDetails.textContent = `Тип: ${requestDetails.task_type}, Адрес: ${address}`;
+                } else {
+                  inProgressDetails.textContent = "Детали заявки не найдены.";
+                }
+              } else {
+                inProgressDetails.textContent = "Заявки в работе отсутствуют.";
+              }
+            } else {
+              console.warn(`Данные для мастера ${masterId} отсутствуют в ответе API.`);
+              // Можно добавить обработку случая отсутствия данных, например, отобразить сообщение об ошибке.
+            }
+          });
+        } catch (error) {
+          console.error('Ошибка при обновлении данных:', error);
+        }
+      }
+      setInterval(updateData, 5000);
+      updateData();
+    </script>
+  </body>
+</html>

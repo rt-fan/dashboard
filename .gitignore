@@ -17,3 +17,5 @@ time.txt
 /templates/index_test.html
 /templates/index_base.html
 /templates/index_js.html
+/.idx
+/.vscode
